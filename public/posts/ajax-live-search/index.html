@@ -1,0 +1,117 @@
+<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>ajax live search | uly.me</title><meta name=keywords content><meta name=description content='Just implemented an Ajax live search on a website.
+Here’s the search page. Results are displayed in div output.
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#search").keyup(function(){
+        var query = $(this).val();
+        if (query != "") {
+        $.ajax({
+            url: &#39;links-ajax.php&#39;,
+            method: &#39;POST&#39;,
+            data: {query:query},
+            success: function(data){
+            $(&#39;#output&#39;).html(data);
+            $(&#39;#output&#39;).css(&#39;display&#39;, &#39;block&#39;);
+            $("#output a").on("click", function(){
+                $("#output").val($(this).html());
+            });
+            $("#search").focusout(function(){
+                window.setTimeout(function() {
+                $(&#39;#output&#39;).css(&#39;display&#39;, &#39;none&#39;);
+                }, 500);
+            });
+            $("#search").focusin(function(){
+                $(&#39;#output&#39;).css(&#39;display&#39;, &#39;block&#39;);
+            });
+            }
+        });
+        } else {
+        $(&#39;#output&#39;).css(&#39;display&#39;, &#39;none&#39;);
+    }
+    });
+});
+</script>
+
+<div class="form-row">
+    <div class="col">
+        <input autocomplete="off" class="form-control form-control-success" id="search" name="search" placeholder="Search here...." type="text"></input>
+    </div>
+</div>
+<div id="output"></div>
+Here’s the links-ajax.php which display the search results with links.'><meta name=author content="ulysses"><link rel=canonical href=http://localhost:1313/posts/ajax-live-search/><link crossorigin=anonymous href=/assets/css/stylesheet.48e934b40b9f1f2e81cbdf21a7e315daf1bd35aafc45067711b26ed16bbc3829.css integrity="sha256-SOk0tAufHy6By98hp+MV2vG9Nar8RQZ3EbJu0Wu8OCk=" rel="preload stylesheet" as=style><link rel=icon href=http://localhost:1313/favicon.ico><link rel=icon type=image/png sizes=16x16 href=http://localhost:1313/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=http://localhost:1313/favicon-32x32.png><link rel=apple-touch-icon href=http://localhost:1313/apple-touch-icon.png><link rel=mask-icon href=http://localhost:1313/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=http://localhost:1313/posts/ajax-live-search/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="http://localhost:1313/posts/ajax-live-search/"><meta property="og:site_name" content="uly.me"><meta property="og:title" content="ajax live search"><meta property="og:description" content='Just implemented an Ajax live search on a website.
+Here’s the search page. Results are displayed in div output.
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script> <script type="text/javascript"> $(document).ready(function(){ $("#search").keyup(function(){ var query = $(this).val(); if (query != "") { $.ajax({ url: &#39;links-ajax.php&#39;, method: &#39;POST&#39;, data: {query:query}, success: function(data){ $(&#39;#output&#39;).html(data); $(&#39;#output&#39;).css(&#39;display&#39;, &#39;block&#39;); $("#output a").on("click", function(){ $("#output").val($(this).html()); }); $("#search").focusout(function(){ window.setTimeout(function() { $(&#39;#output&#39;).css(&#39;display&#39;, &#39;none&#39;); }, 500); }); $("#search").focusin(function(){ $(&#39;#output&#39;).css(&#39;display&#39;, &#39;block&#39;); }); } }); } else { $(&#39;#output&#39;).css(&#39;display&#39;, &#39;none&#39;); } }); }); </script> <div class="form-row"> <div class="col"> <input autocomplete="off" class="form-control form-control-success" id="search" name="search" placeholder="Search here...." type="text"></input> </div> </div> <div id="output"></div> Here’s the links-ajax.php which display the search results with links.'><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2022-05-22T00:00:00+00:00"><meta property="article:modified_time" content="2022-05-22T00:00:00+00:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="ajax live search"><meta name=twitter:description content='Just implemented an Ajax live search on a website.
+Here’s the search page. Results are displayed in div output.
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script> <script type="text/javascript"> $(document).ready(function(){ $("#search").keyup(function(){ var query = $(this).val(); if (query != "") { $.ajax({ url: &#39;links-ajax.php&#39;, method: &#39;POST&#39;, data: {query:query}, success: function(data){ $(&#39;#output&#39;).html(data); $(&#39;#output&#39;).css(&#39;display&#39;, &#39;block&#39;); $("#output a").on("click", function(){ $("#output").val($(this).html()); }); $("#search").focusout(function(){ window.setTimeout(function() { $(&#39;#output&#39;).css(&#39;display&#39;, &#39;none&#39;); }, 500); }); $("#search").focusin(function(){ $(&#39;#output&#39;).css(&#39;display&#39;, &#39;block&#39;); }); } }); } else { $(&#39;#output&#39;).css(&#39;display&#39;, &#39;none&#39;); } }); }); </script> <div class="form-row"> <div class="col"> <input autocomplete="off" class="form-control form-control-success" id="search" name="search" placeholder="Search here...." type="text"></input> </div> </div> <div id="output"></div> Here’s the links-ajax.php which display the search results with links.'><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"http://localhost:1313/posts/"},{"@type":"ListItem","position":2,"name":"ajax live search","item":"http://localhost:1313/posts/ajax-live-search/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"ajax live search","name":"ajax live search","description":"Just implemented an Ajax live search on a website.\nHere’s the search page. Results are displayed in div output.\n\u0026lt;script src=\u0026#34;https://code.jquery.com/jquery-3.4.1.js\u0026#34;\u0026gt;\u0026lt;/script\u0026gt; \u0026lt;script type=\u0026#34;text/javascript\u0026#34;\u0026gt; $(document).ready(function(){ $(\u0026#34;#search\u0026#34;).keyup(function(){ var query = $(this).val(); if (query != \u0026#34;\u0026#34;) { $.ajax({ url: \u0026#39;links-ajax.php\u0026#39;, method: \u0026#39;POST\u0026#39;, data: {query:query}, success: function(data){ $(\u0026#39;#output\u0026#39;).html(data); $(\u0026#39;#output\u0026#39;).css(\u0026#39;display\u0026#39;, \u0026#39;block\u0026#39;); $(\u0026#34;#output a\u0026#34;).on(\u0026#34;click\u0026#34;, function(){ $(\u0026#34;#output\u0026#34;).val($(this).html()); }); $(\u0026#34;#search\u0026#34;).focusout(function(){ window.setTimeout(function() { $(\u0026#39;#output\u0026#39;).css(\u0026#39;display\u0026#39;, \u0026#39;none\u0026#39;); }, 500); }); $(\u0026#34;#search\u0026#34;).focusin(function(){ $(\u0026#39;#output\u0026#39;).css(\u0026#39;display\u0026#39;, \u0026#39;block\u0026#39;); }); } }); } else { $(\u0026#39;#output\u0026#39;).css(\u0026#39;display\u0026#39;, \u0026#39;none\u0026#39;); } }); }); \u0026lt;/script\u0026gt; \u0026lt;div class=\u0026#34;form-row\u0026#34;\u0026gt; \u0026lt;div class=\u0026#34;col\u0026#34;\u0026gt; \u0026lt;input autocomplete=\u0026#34;off\u0026#34; class=\u0026#34;form-control form-control-success\u0026#34; id=\u0026#34;search\u0026#34; name=\u0026#34;search\u0026#34; placeholder=\u0026#34;Search here....\u0026#34; type=\u0026#34;text\u0026#34;\u0026gt;\u0026lt;/input\u0026gt; \u0026lt;/div\u0026gt; \u0026lt;/div\u0026gt; \u0026lt;div id=\u0026#34;output\u0026#34;\u0026gt;\u0026lt;/div\u0026gt; Here’s the links-ajax.php which display the search results with links.\n","keywords":[],"articleBody":"Just implemented an Ajax live search on a website.\nHere’s the search page. Results are displayed in div output.\nHere’s the links-ajax.php which display the search results with links.\n\u003c?php $servername='localhost'; $username=''; $password=''; $dbname = \"\"; $conn=mysqli_connect($servername,$username,$password,\"$dbname\"); if(!$conn) { die('Could not Connect MySql Server:' .mysql_error()); } if (isset($_POST['query'])) { $query = \u003c\u003c\u003c\"SQL SELECT * FROM links WHERE `name` LIKE '%{$_POST['query']}%' OR `url` LIKE '%{$_POST['query']}%' OR `tag` LIKE '%{$_POST['query']}%' ORDER BY name ASC, url ASC\" SQL; $result = mysqli_query($conn, $query); if (mysqli_num_rows($result) ?\u003e 0) { while ($user = mysqli_fetch_array($result)) { echo \"\".$user['name'].\"\n\"; } } else { echo \"No results found...\n\"; } } ?\u003e I couldn’t get the links working, until I added the 500ms of timeout in .focusout.\n","wordCount":"192","inLanguage":"en","datePublished":"2022-05-22T00:00:00Z","dateModified":"2022-05-22T00:00:00Z","author":{"@type":"Person","name":"ulysses"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:1313/posts/ajax-live-search/"},"publisher":{"@type":"Organization","name":"uly.me","logo":{"@type":"ImageObject","url":"http://localhost:1313/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=header-nav><div class=logo><a href=http://localhost:1313/ accesskey=h title="uly.me (Alt + H)">uly.me</a><div class=logo-switches><button id=theme-toggle class=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
+<svg class="moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+<svg class="sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu class=menu><li><a href=http://localhost:1313/ title=Home><span>Home</span></a></li><li><a href=http://localhost:1313/about/ title=About><span>About</span></a></li><li><a href=http://localhost:1313/archives/ title=Archives><span>Archives</span></a></li><li><a href=http://localhost:1313/search/ title="Search (Alt + /)" accesskey=/><span>Search</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><nav class=breadcrumbs role=navigation aria-label=Breadcrumb><a href=/>Home</a>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"/></svg>
+<a href=/posts/>Posts</a>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"/></svg></nav><h1 class="post-title entry-hint-parent">ajax live search</h1><div class=post-meta><span title=2022-05-22T00:00:00+00:00>May 22, 2022</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>ulysses</span></div></header><div class="post-content md-content"><p>Just implemented an Ajax live search on a website.</p><p>Here’s the search page. Results are displayed in div output.</p><pre tabindex=0><code>&lt;script src=&#34;https://code.jquery.com/jquery-3.4.1.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+$(document).ready(function(){
+    $(&#34;#search&#34;).keyup(function(){
+        var query = $(this).val();
+        if (query != &#34;&#34;) {
+        $.ajax({
+            url: &#39;links-ajax.php&#39;,
+            method: &#39;POST&#39;,
+            data: {query:query},
+            success: function(data){
+            $(&#39;#output&#39;).html(data);
+            $(&#39;#output&#39;).css(&#39;display&#39;, &#39;block&#39;);
+            $(&#34;#output a&#34;).on(&#34;click&#34;, function(){
+                $(&#34;#output&#34;).val($(this).html());
+            });
+            $(&#34;#search&#34;).focusout(function(){
+                window.setTimeout(function() {
+                $(&#39;#output&#39;).css(&#39;display&#39;, &#39;none&#39;);
+                }, 500);
+            });
+            $(&#34;#search&#34;).focusin(function(){
+                $(&#39;#output&#39;).css(&#39;display&#39;, &#39;block&#39;);
+            });
+            }
+        });
+        } else {
+        $(&#39;#output&#39;).css(&#39;display&#39;, &#39;none&#39;);
+    }
+    });
+});
+&lt;/script&gt;
+
+&lt;div class=&#34;form-row&#34;&gt;
+    &lt;div class=&#34;col&#34;&gt;
+        &lt;input autocomplete=&#34;off&#34; class=&#34;form-control form-control-success&#34; id=&#34;search&#34; name=&#34;search&#34; placeholder=&#34;Search here....&#34; type=&#34;text&#34;&gt;&lt;/input&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;output&#34;&gt;&lt;/div&gt;
+</code></pre><p>Here’s the links-ajax.php which display the search results with links.</p><pre tabindex=0><code>&lt;?php $servername=&#39;localhost&#39;;
+$username=&#39;&#39;;
+$password=&#39;&#39;;
+$dbname = &#34;&#34;;
+$conn=mysqli_connect($servername,$username,$password,&#34;$dbname&#34;);
+if(!$conn) { die(&#39;Could not Connect MySql Server:&#39; .mysql_error()); }
+if (isset($_POST[&#39;query&#39;])) {
+    $query = &lt;&lt;&lt;&#34;SQL
+                 SELECT * FROM links WHERE `name` LIKE &#39;%{$_POST[&#39;query&#39;]}%&#39; 
+                 OR `url` LIKE &#39;%{$_POST[&#39;query&#39;]}%&#39; 
+                 OR `tag` LIKE &#39;%{$_POST[&#39;query&#39;]}%&#39; 
+                 ORDER BY name ASC, url ASC&#34;
+             SQL;
+    $result = mysqli_query($conn, $query);
+    if (mysqli_num_rows($result) ?&gt; 0) {
+        while ($user = mysqli_fetch_array($result)) {
+            echo &#34;&lt;a rel=&#34;noopener&#34; target=&#34;_blank&#34;&gt;&#34;.$user[&#39;name&#39;].&#34;&lt;/a&gt;&lt;br&gt;&lt;/br&gt;&#34;;
+        }
+    } else {
+        echo &#34;&lt;p style=&#34;color:red&#34;&gt;No results found...&lt;/p&gt;&#34;;
+    }
+}
+?&gt;
+</code></pre><p>I couldn’t get the links working, until I added the 500ms of timeout in .focusout.</p></div><footer class=post-footer><ul class=post-tags></ul></footer></article></main><footer class=footer><span>&copy; 2026 <a href=http://localhost:1313/>uly.me</a></span> ·
+<span>Powered by
+<a href="https://gohugo.io/?utm_source=papermod" rel=noopener target=_blank>Hugo</a> &
+<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top id=top-link class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey=g><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up"><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg>
+</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10));let t;menu.addEventListener("scroll",function(){clearTimeout(t),t=setTimeout(function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)},150)},{passive:!0})}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var n=this.getAttribute("href").substr(1);const t=document.querySelector(`[id='${decodeURIComponent(n)}']`);window.matchMedia("(prefers-reduced-motion: reduce)").matches?t.scrollIntoView():t.scrollIntoView({behavior:"smooth"}),t.tabIndex<0&&!t.hasAttribute("tabindex")&&t.setAttribute("tabindex","-1"),t.focus({preventScroll:!0}),n==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${n}`)})})</script><script>var toplink=document.getElementById("top-link"),scrollTicking=!1;window.addEventListener("scroll",function(){if(scrollTicking)return;scrollTicking=!0,requestAnimationFrame(function(){const e=window.innerHeight,t=document.body.scrollTop>e||document.documentElement.scrollTop>e;toplink.classList.toggle("hidden",!t),scrollTicking=!1})},{passive:!0})</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copy";function s(){t.innerHTML="copied!",setTimeout(()=>{t.innerHTML="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>

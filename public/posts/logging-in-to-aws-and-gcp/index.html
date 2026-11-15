@@ -1,0 +1,113 @@
+<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>logging in to aws and gcp | uly.me</title><meta name=keywords content><meta name=description content='Here’s my Bash script to login to both AWS and GCP. It has a little bit of intelligence. It checks if you are already logged in, and skips if you are. If not logged in, it will open up the cloud web console which is protected by Okta. The script has been redacted and replace with generic usernames and web pages for security reasons.
+#!/bin/bash
+## CHECK IF LOGGED IN TO GCP 
+read -p "Login to GCP? (y/n) : " login_gcp
+if [[ $login_gcp = "y" ]]; then
+  file1="/Users/username/code/etc/auth-gcp.txt"
+  gcloud auth print-identity-token 1> /dev/null 2> $file
+  user=$(gcloud config list account --format "value(core.account)")
+  auth=$(cat "$file" | head -n 1)
+  rm -f $file1
+  if [[ $auth == "Reauthentication required." ]] ||  [[ $user != "first.last@domain.com" ]]; then
+    echo "Logging in to Google Cloud Platform."
+    gcloud auth login
+    gcloud auth application-default login
+    open https://okta-login
+  else
+    echo "You are already logged in to Google Cloud Platform."
+  fi
+else
+  echo "Skipping GCP ... "
+fi
+## CHECK IF LOGGED IN TO AWS
+read -p "Login to AWS? (y/n) : " login_aws
+if [[ $login_aws = "y" ]]; then  
+  file2=""/Users/username/code/etc/auth-aws.txt""
+  aws sts get-caller-identity 2> $file2
+  expired=$(tail -n +2 "$file2")
+  rm -f $file2
+  if [[ $expired =~ "expired" ]] || [[ $expired =~ "Unable" ]]; then
+    open https://okta-login
+    echo "please wait until web page loads ... "
+    read -p "Press any key to continue... " -n1 -s
+    echo ""
+    basecred=&#39;/Users/username/.aws/credentials.base&#39;
+    newcreds=&#39;/Users/username/Downloads/credentials&#39;
+    creds=&#39;/Users/username/.aws/credentials&#39;
+    if [ ! -f $newcreds ]; then
+      echo &#39;No AWS credentials.&#39;
+      exit
+    else
+      cat $newcreds $basecred > $creds
+      echo &#39;New AWS credentials.&#39;
+      sleep 3
+      rm -f $newcreds
+    fi
+  else
+    echo "You are already logged in to AWS."
+  fi
+else 
+  echo "Skipping AWS ... "
+fi
+'><meta name=author content="ulysses"><link rel=canonical href=http://localhost:1313/posts/logging-in-to-aws-and-gcp/><link crossorigin=anonymous href=/assets/css/stylesheet.48e934b40b9f1f2e81cbdf21a7e315daf1bd35aafc45067711b26ed16bbc3829.css integrity="sha256-SOk0tAufHy6By98hp+MV2vG9Nar8RQZ3EbJu0Wu8OCk=" rel="preload stylesheet" as=style><link rel=icon href=http://localhost:1313/favicon.ico><link rel=icon type=image/png sizes=16x16 href=http://localhost:1313/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=http://localhost:1313/favicon-32x32.png><link rel=apple-touch-icon href=http://localhost:1313/apple-touch-icon.png><link rel=mask-icon href=http://localhost:1313/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=http://localhost:1313/posts/logging-in-to-aws-and-gcp/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="http://localhost:1313/posts/logging-in-to-aws-and-gcp/"><meta property="og:site_name" content="uly.me"><meta property="og:title" content="logging in to aws and gcp"><meta property="og:description" content='Here’s my Bash script to login to both AWS and GCP. It has a little bit of intelligence. It checks if you are already logged in, and skips if you are. If not logged in, it will open up the cloud web console which is protected by Okta. The script has been redacted and replace with generic usernames and web pages for security reasons.
+#!/bin/bash ## CHECK IF LOGGED IN TO GCP read -p "Login to GCP? (y/n) : " login_gcp if [[ $login_gcp = "y" ]]; then file1="/Users/username/code/etc/auth-gcp.txt" gcloud auth print-identity-token 1> /dev/null 2> $file user=$(gcloud config list account --format "value(core.account)") auth=$(cat "$file" | head -n 1) rm -f $file1 if [[ $auth == "Reauthentication required." ]] || [[ $user != "first.last@domain.com" ]]; then echo "Logging in to Google Cloud Platform." gcloud auth login gcloud auth application-default login open https://okta-login else echo "You are already logged in to Google Cloud Platform." fi else echo "Skipping GCP ... " fi ## CHECK IF LOGGED IN TO AWS read -p "Login to AWS? (y/n) : " login_aws if [[ $login_aws = "y" ]]; then file2=""/Users/username/code/etc/auth-aws.txt"" aws sts get-caller-identity 2> $file2 expired=$(tail -n +2 "$file2") rm -f $file2 if [[ $expired =~ "expired" ]] || [[ $expired =~ "Unable" ]]; then open https://okta-login echo "please wait until web page loads ... " read -p "Press any key to continue... " -n1 -s echo "" basecred=&#39;/Users/username/.aws/credentials.base&#39; newcreds=&#39;/Users/username/Downloads/credentials&#39; creds=&#39;/Users/username/.aws/credentials&#39; if [ ! -f $newcreds ]; then echo &#39;No AWS credentials.&#39; exit else cat $newcreds $basecred > $creds echo &#39;New AWS credentials.&#39; sleep 3 rm -f $newcreds fi else echo "You are already logged in to AWS." fi else echo "Skipping AWS ... " fi'><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2023-01-22T00:00:00+00:00"><meta property="article:modified_time" content="2023-01-22T00:00:00+00:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="logging in to aws and gcp"><meta name=twitter:description content='Here’s my Bash script to login to both AWS and GCP. It has a little bit of intelligence. It checks if you are already logged in, and skips if you are. If not logged in, it will open up the cloud web console which is protected by Okta. The script has been redacted and replace with generic usernames and web pages for security reasons.
+#!/bin/bash ## CHECK IF LOGGED IN TO GCP read -p "Login to GCP? (y/n) : " login_gcp if [[ $login_gcp = "y" ]]; then file1="/Users/username/code/etc/auth-gcp.txt" gcloud auth print-identity-token 1> /dev/null 2> $file user=$(gcloud config list account --format "value(core.account)") auth=$(cat "$file" | head -n 1) rm -f $file1 if [[ $auth == "Reauthentication required." ]] || [[ $user != "first.last@domain.com" ]]; then echo "Logging in to Google Cloud Platform." gcloud auth login gcloud auth application-default login open https://okta-login else echo "You are already logged in to Google Cloud Platform." fi else echo "Skipping GCP ... " fi ## CHECK IF LOGGED IN TO AWS read -p "Login to AWS? (y/n) : " login_aws if [[ $login_aws = "y" ]]; then file2=""/Users/username/code/etc/auth-aws.txt"" aws sts get-caller-identity 2> $file2 expired=$(tail -n +2 "$file2") rm -f $file2 if [[ $expired =~ "expired" ]] || [[ $expired =~ "Unable" ]]; then open https://okta-login echo "please wait until web page loads ... " read -p "Press any key to continue... " -n1 -s echo "" basecred=&#39;/Users/username/.aws/credentials.base&#39; newcreds=&#39;/Users/username/Downloads/credentials&#39; creds=&#39;/Users/username/.aws/credentials&#39; if [ ! -f $newcreds ]; then echo &#39;No AWS credentials.&#39; exit else cat $newcreds $basecred > $creds echo &#39;New AWS credentials.&#39; sleep 3 rm -f $newcreds fi else echo "You are already logged in to AWS." fi else echo "Skipping AWS ... " fi'><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"http://localhost:1313/posts/"},{"@type":"ListItem","position":2,"name":"logging in to aws and gcp","item":"http://localhost:1313/posts/logging-in-to-aws-and-gcp/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"logging in to aws and gcp","name":"logging in to aws and gcp","description":"Here’s my Bash script to login to both AWS and GCP. It has a little bit of intelligence. It checks if you are already logged in, and skips if you are. If not logged in, it will open up the cloud web console which is protected by Okta. The script has been redacted and replace with generic usernames and web pages for security reasons.\n#!/bin/bash ## CHECK IF LOGGED IN TO GCP read -p \u0026#34;Login to GCP? (y/n) : \u0026#34; login_gcp if [[ $login_gcp = \u0026#34;y\u0026#34; ]]; then file1=\u0026#34;/Users/username/code/etc/auth-gcp.txt\u0026#34; gcloud auth print-identity-token 1\u0026gt; /dev/null 2\u0026gt; $file user=$(gcloud config list account --format \u0026#34;value(core.account)\u0026#34;) auth=$(cat \u0026#34;$file\u0026#34; | head -n 1) rm -f $file1 if [[ $auth == \u0026#34;Reauthentication required.\u0026#34; ]] || [[ $user != \u0026#34;first.last@domain.com\u0026#34; ]]; then echo \u0026#34;Logging in to Google Cloud Platform.\u0026#34; gcloud auth login gcloud auth application-default login open https://okta-login else echo \u0026#34;You are already logged in to Google Cloud Platform.\u0026#34; fi else echo \u0026#34;Skipping GCP ... \u0026#34; fi ## CHECK IF LOGGED IN TO AWS read -p \u0026#34;Login to AWS? (y/n) : \u0026#34; login_aws if [[ $login_aws = \u0026#34;y\u0026#34; ]]; then file2=\u0026#34;\u0026#34;/Users/username/code/etc/auth-aws.txt\u0026#34;\u0026#34; aws sts get-caller-identity 2\u0026gt; $file2 expired=$(tail -n +2 \u0026#34;$file2\u0026#34;) rm -f $file2 if [[ $expired =~ \u0026#34;expired\u0026#34; ]] || [[ $expired =~ \u0026#34;Unable\u0026#34; ]]; then open https://okta-login echo \u0026#34;please wait until web page loads ... \u0026#34; read -p \u0026#34;Press any key to continue... \u0026#34; -n1 -s echo \u0026#34;\u0026#34; basecred=\u0026#39;/Users/username/.aws/credentials.base\u0026#39; newcreds=\u0026#39;/Users/username/Downloads/credentials\u0026#39; creds=\u0026#39;/Users/username/.aws/credentials\u0026#39; if [ ! -f $newcreds ]; then echo \u0026#39;No AWS credentials.\u0026#39; exit else cat $newcreds $basecred \u0026gt; $creds echo \u0026#39;New AWS credentials.\u0026#39; sleep 3 rm -f $newcreds fi else echo \u0026#34;You are already logged in to AWS.\u0026#34; fi else echo \u0026#34;Skipping AWS ... \u0026#34; fi ","keywords":[],"articleBody":"Here’s my Bash script to login to both AWS and GCP. It has a little bit of intelligence. It checks if you are already logged in, and skips if you are. If not logged in, it will open up the cloud web console which is protected by Okta. The script has been redacted and replace with generic usernames and web pages for security reasons.\n#!/bin/bash ## CHECK IF LOGGED IN TO GCP read -p \"Login to GCP? (y/n) : \" login_gcp if [[ $login_gcp = \"y\" ]]; then file1=\"/Users/username/code/etc/auth-gcp.txt\" gcloud auth print-identity-token 1\u003e /dev/null 2\u003e $file user=$(gcloud config list account --format \"value(core.account)\") auth=$(cat \"$file\" | head -n 1) rm -f $file1 if [[ $auth == \"Reauthentication required.\" ]] || [[ $user != \"first.last@domain.com\" ]]; then echo \"Logging in to Google Cloud Platform.\" gcloud auth login gcloud auth application-default login open https://okta-login else echo \"You are already logged in to Google Cloud Platform.\" fi else echo \"Skipping GCP ... \" fi ## CHECK IF LOGGED IN TO AWS read -p \"Login to AWS? (y/n) : \" login_aws if [[ $login_aws = \"y\" ]]; then file2=\"\"/Users/username/code/etc/auth-aws.txt\"\" aws sts get-caller-identity 2\u003e $file2 expired=$(tail -n +2 \"$file2\") rm -f $file2 if [[ $expired =~ \"expired\" ]] || [[ $expired =~ \"Unable\" ]]; then open https://okta-login echo \"please wait until web page loads ... \" read -p \"Press any key to continue... \" -n1 -s echo \"\" basecred='/Users/username/.aws/credentials.base' newcreds='/Users/username/Downloads/credentials' creds='/Users/username/.aws/credentials' if [ ! -f $newcreds ]; then echo 'No AWS credentials.' exit else cat $newcreds $basecred \u003e $creds echo 'New AWS credentials.' sleep 3 rm -f $newcreds fi else echo \"You are already logged in to AWS.\" fi else echo \"Skipping AWS ... \" fi ","wordCount":"280","inLanguage":"en","datePublished":"2023-01-22T00:00:00Z","dateModified":"2023-01-22T00:00:00Z","author":{"@type":"Person","name":"ulysses"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:1313/posts/logging-in-to-aws-and-gcp/"},"publisher":{"@type":"Organization","name":"uly.me","logo":{"@type":"ImageObject","url":"http://localhost:1313/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=header-nav><div class=logo><a href=http://localhost:1313/ accesskey=h title="uly.me (Alt + H)">uly.me</a><div class=logo-switches><button id=theme-toggle class=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
+<svg class="moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+<svg class="sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu class=menu><li><a href=http://localhost:1313/ title=Home><span>Home</span></a></li><li><a href=http://localhost:1313/about/ title=About><span>About</span></a></li><li><a href=http://localhost:1313/archives/ title=Archives><span>Archives</span></a></li><li><a href=http://localhost:1313/search/ title="Search (Alt + /)" accesskey=/><span>Search</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><nav class=breadcrumbs role=navigation aria-label=Breadcrumb><a href=/>Home</a>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"/></svg>
+<a href=/posts/>Posts</a>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"/></svg></nav><h1 class="post-title entry-hint-parent">logging in to aws and gcp</h1><div class=post-meta><span title=2023-01-22T00:00:00+00:00>January 22, 2023</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>ulysses</span></div></header><div class="post-content md-content"><p>Here’s my Bash script to login to both AWS and GCP. It has a little bit of intelligence. It checks if you are already logged in, and skips if you are. If not logged in, it will open up the cloud web console which is protected by Okta. The script has been redacted and replace with generic usernames and web pages for security reasons.</p><pre tabindex=0><code>#!/bin/bash
+## CHECK IF LOGGED IN TO GCP 
+read -p &#34;Login to GCP? (y/n) : &#34; login_gcp
+if [[ $login_gcp = &#34;y&#34; ]]; then
+  file1=&#34;/Users/username/code/etc/auth-gcp.txt&#34;
+  gcloud auth print-identity-token 1&gt; /dev/null 2&gt; $file
+  user=$(gcloud config list account --format &#34;value(core.account)&#34;)
+  auth=$(cat &#34;$file&#34; | head -n 1)
+  rm -f $file1
+  if [[ $auth == &#34;Reauthentication required.&#34; ]] ||  [[ $user != &#34;first.last@domain.com&#34; ]]; then
+    echo &#34;Logging in to Google Cloud Platform.&#34;
+    gcloud auth login
+    gcloud auth application-default login
+    open https://okta-login
+  else
+    echo &#34;You are already logged in to Google Cloud Platform.&#34;
+  fi
+else
+  echo &#34;Skipping GCP ... &#34;
+fi
+## CHECK IF LOGGED IN TO AWS
+read -p &#34;Login to AWS? (y/n) : &#34; login_aws
+if [[ $login_aws = &#34;y&#34; ]]; then  
+  file2=&#34;&#34;/Users/username/code/etc/auth-aws.txt&#34;&#34;
+  aws sts get-caller-identity 2&gt; $file2
+  expired=$(tail -n +2 &#34;$file2&#34;)
+  rm -f $file2
+  if [[ $expired =~ &#34;expired&#34; ]] || [[ $expired =~ &#34;Unable&#34; ]]; then
+    open https://okta-login
+    echo &#34;please wait until web page loads ... &#34;
+    read -p &#34;Press any key to continue... &#34; -n1 -s
+    echo &#34;&#34;
+    basecred=&#39;/Users/username/.aws/credentials.base&#39;
+    newcreds=&#39;/Users/username/Downloads/credentials&#39;
+    creds=&#39;/Users/username/.aws/credentials&#39;
+    if [ ! -f $newcreds ]; then
+      echo &#39;No AWS credentials.&#39;
+      exit
+    else
+      cat $newcreds $basecred &gt; $creds
+      echo &#39;New AWS credentials.&#39;
+      sleep 3
+      rm -f $newcreds
+    fi
+  else
+    echo &#34;You are already logged in to AWS.&#34;
+  fi
+else 
+  echo &#34;Skipping AWS ... &#34;
+fi
+</code></pre></div><footer class=post-footer><ul class=post-tags></ul></footer></article></main><footer class=footer><span>&copy; 2026 <a href=http://localhost:1313/>uly.me</a></span> ·
+<span>Powered by
+<a href="https://gohugo.io/?utm_source=papermod" rel=noopener target=_blank>Hugo</a> &
+<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top id=top-link class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey=g><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up"><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg>
+</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10));let t;menu.addEventListener("scroll",function(){clearTimeout(t),t=setTimeout(function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)},150)},{passive:!0})}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var n=this.getAttribute("href").substr(1);const t=document.querySelector(`[id='${decodeURIComponent(n)}']`);window.matchMedia("(prefers-reduced-motion: reduce)").matches?t.scrollIntoView():t.scrollIntoView({behavior:"smooth"}),t.tabIndex<0&&!t.hasAttribute("tabindex")&&t.setAttribute("tabindex","-1"),t.focus({preventScroll:!0}),n==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${n}`)})})</script><script>var toplink=document.getElementById("top-link"),scrollTicking=!1;window.addEventListener("scroll",function(){if(scrollTicking)return;scrollTicking=!0,requestAnimationFrame(function(){const e=window.innerHeight,t=document.body.scrollTop>e||document.documentElement.scrollTop>e;toplink.classList.toggle("hidden",!t),scrollTicking=!1})},{passive:!0})</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copy";function s(){t.innerHTML="copied!",setTimeout(()=>{t.innerHTML="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>

@@ -1,0 +1,143 @@
+<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>hls player | uly.me</title><meta name=keywords content><meta name=description content="Here&rsquo;s an HLS video player using hls.js.
+<html>
+  <head>
+    <script src=&#34;https://cdnjs.cloudflare.com/ajax/libs/hls.js/0.5.14/hls.js&#34;></script>
+  </head>
+  <body>
+    <p><video id=&#34;video&#34; controls muted autoplay style=&#34;width: 80%&#34;></video></p>
+
+    <script>
+        var video = document.getElementById('video');
+        var videoSrc = '/bunny/output.m3u8';
+    
+        // Initialize HLS.js if supported
+        if (Hls.isSupported()) {
+            var hls = new Hls();
+            hls.loadSource(videoSrc);
+            hls.attachMedia(video);
+            hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                video.muted = true;
+                video.play();
+            });
+        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+            video.src = videoSrc;
+        }
+    
+        // Assuming you have a reference to your video element
+        const videoElement = document.getElementById('video');
+    
+        // Style the video element to center it both horizontally and vertically
+        videoElement.style.display = 'block'; // Ensure it behaves like a block element
+        videoElement.style.margin = '0 auto'; // Center it horizontally
+        videoElement.style.position = 'absolute'; // Position it absolutely to center vertically
+        videoElement.style.top = '50%'; // Vertically center
+        videoElement.style.left = '50%'; // Horizontally center
+        videoElement.style.transform = 'translate(-50%, -50%)'; // Adjust for exact centering
+        videoElement.style.maxWidth = '90%'; // Optional: limit the video size to 90% of the screen width
+        videoElement.style.maxHeight = '80vh'; // Optional: limit the video height to 80% of the viewport height
+    
+        // Create a button to unmute the player
+        const unmuteButton = document.createElement('button');
+        unmuteButton.textContent = 'Unmute';
+    
+        // Style the button to make it bigger
+        unmuteButton.style.fontSize = '30px'; // Larger font size
+        unmuteButton.style.padding = '20px 40px'; // Larger button size
+        unmuteButton.style.backgroundColor = '#007BFF'; // Button color
+        unmuteButton.style.color = 'white'; // Text color
+        unmuteButton.style.border = 'none'; // Remove border
+        unmuteButton.style.borderRadius = '10px'; // Rounded corners
+        unmuteButton.style.cursor = 'pointer'; // Pointer cursor on hover
+        unmuteButton.style.position = 'absolute'; // Absolute positioning
+        unmuteButton.style.top = '50%'; // Vertically center
+        unmuteButton.style.left = '50%'; // Horizontally center
+        unmuteButton.style.transform = 'translate(-50%, -50%)'; // Adjust for exact centering
+    
+        // Add an event listener to the button
+        unmuteButton.addEventListener('click', () => {
+            videoElement.muted = false; // Unmute the video
+            unmuteButton.remove(); // Remove the button once clicked
+        });
+ 
+        // Add the button to the DOM
+        document.body.appendChild(unmuteButton);
+ 
+   </script>
+  </body>
+"><meta name=author content="ulysses"><link rel=canonical href=http://localhost:1313/posts/hls-player/><link crossorigin=anonymous href=/assets/css/stylesheet.48e934b40b9f1f2e81cbdf21a7e315daf1bd35aafc45067711b26ed16bbc3829.css integrity="sha256-SOk0tAufHy6By98hp+MV2vG9Nar8RQZ3EbJu0Wu8OCk=" rel="preload stylesheet" as=style><link rel=icon href=http://localhost:1313/favicon.ico><link rel=icon type=image/png sizes=16x16 href=http://localhost:1313/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=http://localhost:1313/favicon-32x32.png><link rel=apple-touch-icon href=http://localhost:1313/apple-touch-icon.png><link rel=mask-icon href=http://localhost:1313/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=http://localhost:1313/posts/hls-player/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="http://localhost:1313/posts/hls-player/"><meta property="og:site_name" content="uly.me"><meta property="og:title" content="hls player"><meta property="og:description" content="Here’s an HLS video player using hls.js.
+<html> <head> <script src=&#34;https://cdnjs.cloudflare.com/ajax/libs/hls.js/0.5.14/hls.js&#34;></script> </head> <body> <p><video id=&#34;video&#34; controls muted autoplay style=&#34;width: 80%&#34;></video></p> <script> var video = document.getElementById('video'); var videoSrc = '/bunny/output.m3u8'; // Initialize HLS.js if supported if (Hls.isSupported()) { var hls = new Hls(); hls.loadSource(videoSrc); hls.attachMedia(video); hls.on(Hls.Events.MANIFEST_PARSED, function () { video.muted = true; video.play(); }); } else if (video.canPlayType('application/vnd.apple.mpegurl')) { video.src = videoSrc; } // Assuming you have a reference to your video element const videoElement = document.getElementById('video'); // Style the video element to center it both horizontally and vertically videoElement.style.display = 'block'; // Ensure it behaves like a block element videoElement.style.margin = '0 auto'; // Center it horizontally videoElement.style.position = 'absolute'; // Position it absolutely to center vertically videoElement.style.top = '50%'; // Vertically center videoElement.style.left = '50%'; // Horizontally center videoElement.style.transform = 'translate(-50%, -50%)'; // Adjust for exact centering videoElement.style.maxWidth = '90%'; // Optional: limit the video size to 90% of the screen width videoElement.style.maxHeight = '80vh'; // Optional: limit the video height to 80% of the viewport height // Create a button to unmute the player const unmuteButton = document.createElement('button'); unmuteButton.textContent = 'Unmute'; // Style the button to make it bigger unmuteButton.style.fontSize = '30px'; // Larger font size unmuteButton.style.padding = '20px 40px'; // Larger button size unmuteButton.style.backgroundColor = '#007BFF'; // Button color unmuteButton.style.color = 'white'; // Text color unmuteButton.style.border = 'none'; // Remove border unmuteButton.style.borderRadius = '10px'; // Rounded corners unmuteButton.style.cursor = 'pointer'; // Pointer cursor on hover unmuteButton.style.position = 'absolute'; // Absolute positioning unmuteButton.style.top = '50%'; // Vertically center unmuteButton.style.left = '50%'; // Horizontally center unmuteButton.style.transform = 'translate(-50%, -50%)'; // Adjust for exact centering // Add an event listener to the button unmuteButton.addEventListener('click', () => { videoElement.muted = false; // Unmute the video unmuteButton.remove(); // Remove the button once clicked }); // Add the button to the DOM document.body.appendChild(unmuteButton); </script> </body>"><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2025-01-06T00:00:00+00:00"><meta property="article:modified_time" content="2025-01-06T00:00:00+00:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="hls player"><meta name=twitter:description content="Here’s an HLS video player using hls.js.
+<html> <head> <script src=&#34;https://cdnjs.cloudflare.com/ajax/libs/hls.js/0.5.14/hls.js&#34;></script> </head> <body> <p><video id=&#34;video&#34; controls muted autoplay style=&#34;width: 80%&#34;></video></p> <script> var video = document.getElementById('video'); var videoSrc = '/bunny/output.m3u8'; // Initialize HLS.js if supported if (Hls.isSupported()) { var hls = new Hls(); hls.loadSource(videoSrc); hls.attachMedia(video); hls.on(Hls.Events.MANIFEST_PARSED, function () { video.muted = true; video.play(); }); } else if (video.canPlayType('application/vnd.apple.mpegurl')) { video.src = videoSrc; } // Assuming you have a reference to your video element const videoElement = document.getElementById('video'); // Style the video element to center it both horizontally and vertically videoElement.style.display = 'block'; // Ensure it behaves like a block element videoElement.style.margin = '0 auto'; // Center it horizontally videoElement.style.position = 'absolute'; // Position it absolutely to center vertically videoElement.style.top = '50%'; // Vertically center videoElement.style.left = '50%'; // Horizontally center videoElement.style.transform = 'translate(-50%, -50%)'; // Adjust for exact centering videoElement.style.maxWidth = '90%'; // Optional: limit the video size to 90% of the screen width videoElement.style.maxHeight = '80vh'; // Optional: limit the video height to 80% of the viewport height // Create a button to unmute the player const unmuteButton = document.createElement('button'); unmuteButton.textContent = 'Unmute'; // Style the button to make it bigger unmuteButton.style.fontSize = '30px'; // Larger font size unmuteButton.style.padding = '20px 40px'; // Larger button size unmuteButton.style.backgroundColor = '#007BFF'; // Button color unmuteButton.style.color = 'white'; // Text color unmuteButton.style.border = 'none'; // Remove border unmuteButton.style.borderRadius = '10px'; // Rounded corners unmuteButton.style.cursor = 'pointer'; // Pointer cursor on hover unmuteButton.style.position = 'absolute'; // Absolute positioning unmuteButton.style.top = '50%'; // Vertically center unmuteButton.style.left = '50%'; // Horizontally center unmuteButton.style.transform = 'translate(-50%, -50%)'; // Adjust for exact centering // Add an event listener to the button unmuteButton.addEventListener('click', () => { videoElement.muted = false; // Unmute the video unmuteButton.remove(); // Remove the button once clicked }); // Add the button to the DOM document.body.appendChild(unmuteButton); </script> </body>"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"http://localhost:1313/posts/"},{"@type":"ListItem","position":2,"name":"hls player","item":"http://localhost:1313/posts/hls-player/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"hls player","name":"hls player","description":"Here\u0026rsquo;s an HLS video player using hls.js.\n\u0026lt;html\u0026gt; \u0026lt;head\u0026gt; \u0026lt;script src=\u0026#34;https://cdnjs.cloudflare.com/ajax/libs/hls.js/0.5.14/hls.js\u0026#34;\u0026gt;\u0026lt;/script\u0026gt; \u0026lt;/head\u0026gt; \u0026lt;body\u0026gt; \u0026lt;p\u0026gt;\u0026lt;video id=\u0026#34;video\u0026#34; controls muted autoplay style=\u0026#34;width: 80%\u0026#34;\u0026gt;\u0026lt;/video\u0026gt;\u0026lt;/p\u0026gt; \u0026lt;script\u0026gt; var video = document.getElementById(\u0026#39;video\u0026#39;); var videoSrc = \u0026#39;/bunny/output.m3u8\u0026#39;; // Initialize HLS.js if supported if (Hls.isSupported()) { var hls = new Hls(); hls.loadSource(videoSrc); hls.attachMedia(video); hls.on(Hls.Events.MANIFEST_PARSED, function () { video.muted = true; video.play(); }); } else if (video.canPlayType(\u0026#39;application/vnd.apple.mpegurl\u0026#39;)) { video.src = videoSrc; } // Assuming you have a reference to your video element const videoElement = document.getElementById(\u0026#39;video\u0026#39;); // Style the video element to center it both horizontally and vertically videoElement.style.display = \u0026#39;block\u0026#39;; // Ensure it behaves like a block element videoElement.style.margin = \u0026#39;0 auto\u0026#39;; // Center it horizontally videoElement.style.position = \u0026#39;absolute\u0026#39;; // Position it absolutely to center vertically videoElement.style.top = \u0026#39;50%\u0026#39;; // Vertically center videoElement.style.left = \u0026#39;50%\u0026#39;; // Horizontally center videoElement.style.transform = \u0026#39;translate(-50%, -50%)\u0026#39;; // Adjust for exact centering videoElement.style.maxWidth = \u0026#39;90%\u0026#39;; // Optional: limit the video size to 90% of the screen width videoElement.style.maxHeight = \u0026#39;80vh\u0026#39;; // Optional: limit the video height to 80% of the viewport height // Create a button to unmute the player const unmuteButton = document.createElement(\u0026#39;button\u0026#39;); unmuteButton.textContent = \u0026#39;Unmute\u0026#39;; // Style the button to make it bigger unmuteButton.style.fontSize = \u0026#39;30px\u0026#39;; // Larger font size unmuteButton.style.padding = \u0026#39;20px 40px\u0026#39;; // Larger button size unmuteButton.style.backgroundColor = \u0026#39;#007BFF\u0026#39;; // Button color unmuteButton.style.color = \u0026#39;white\u0026#39;; // Text color unmuteButton.style.border = \u0026#39;none\u0026#39;; // Remove border unmuteButton.style.borderRadius = \u0026#39;10px\u0026#39;; // Rounded corners unmuteButton.style.cursor = \u0026#39;pointer\u0026#39;; // Pointer cursor on hover unmuteButton.style.position = \u0026#39;absolute\u0026#39;; // Absolute positioning unmuteButton.style.top = \u0026#39;50%\u0026#39;; // Vertically center unmuteButton.style.left = \u0026#39;50%\u0026#39;; // Horizontally center unmuteButton.style.transform = \u0026#39;translate(-50%, -50%)\u0026#39;; // Adjust for exact centering // Add an event listener to the button unmuteButton.addEventListener(\u0026#39;click\u0026#39;, () =\u0026gt; { videoElement.muted = false; // Unmute the video unmuteButton.remove(); // Remove the button once clicked }); // Add the button to the DOM document.body.appendChild(unmuteButton); \u0026lt;/script\u0026gt; \u0026lt;/body\u0026gt; ","keywords":[],"articleBody":"Here’s an HLS video player using hls.js.\n","wordCount":"302","inLanguage":"en","datePublished":"2025-01-06T00:00:00Z","dateModified":"2025-01-06T00:00:00Z","author":{"@type":"Person","name":"ulysses"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:1313/posts/hls-player/"},"publisher":{"@type":"Organization","name":"uly.me","logo":{"@type":"ImageObject","url":"http://localhost:1313/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=header-nav><div class=logo><a href=http://localhost:1313/ accesskey=h title="uly.me (Alt + H)">uly.me</a><div class=logo-switches><button id=theme-toggle class=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
+<svg class="moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+<svg class="sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu class=menu><li><a href=http://localhost:1313/ title=Home><span>Home</span></a></li><li><a href=http://localhost:1313/about/ title=About><span>About</span></a></li><li><a href=http://localhost:1313/archives/ title=Archives><span>Archives</span></a></li><li><a href=http://localhost:1313/search/ title="Search (Alt + /)" accesskey=/><span>Search</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><nav class=breadcrumbs role=navigation aria-label=Breadcrumb><a href=/>Home</a>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"/></svg>
+<a href=/posts/>Posts</a>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"/></svg></nav><h1 class="post-title entry-hint-parent">hls player</h1><div class=post-meta><span title=2025-01-06T00:00:00+00:00>January 6, 2025</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>ulysses</span></div></header><div class="post-content md-content"><p>Here&rsquo;s an HLS video player using hls.js.</p><pre tabindex=0><code>&lt;html&gt;
+  &lt;head&gt;
+    &lt;script src=&#34;https://cdnjs.cloudflare.com/ajax/libs/hls.js/0.5.14/hls.js&#34;&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;&lt;video id=&#34;video&#34; controls muted autoplay style=&#34;width: 80%&#34;&gt;&lt;/video&gt;&lt;/p&gt;
+
+    &lt;script&gt;
+        var video = document.getElementById(&#39;video&#39;);
+        var videoSrc = &#39;/bunny/output.m3u8&#39;;
+    
+        // Initialize HLS.js if supported
+        if (Hls.isSupported()) {
+            var hls = new Hls();
+            hls.loadSource(videoSrc);
+            hls.attachMedia(video);
+            hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                video.muted = true;
+                video.play();
+            });
+        } else if (video.canPlayType(&#39;application/vnd.apple.mpegurl&#39;)) {
+            video.src = videoSrc;
+        }
+    
+        // Assuming you have a reference to your video element
+        const videoElement = document.getElementById(&#39;video&#39;);
+    
+        // Style the video element to center it both horizontally and vertically
+        videoElement.style.display = &#39;block&#39;; // Ensure it behaves like a block element
+        videoElement.style.margin = &#39;0 auto&#39;; // Center it horizontally
+        videoElement.style.position = &#39;absolute&#39;; // Position it absolutely to center vertically
+        videoElement.style.top = &#39;50%&#39;; // Vertically center
+        videoElement.style.left = &#39;50%&#39;; // Horizontally center
+        videoElement.style.transform = &#39;translate(-50%, -50%)&#39;; // Adjust for exact centering
+        videoElement.style.maxWidth = &#39;90%&#39;; // Optional: limit the video size to 90% of the screen width
+        videoElement.style.maxHeight = &#39;80vh&#39;; // Optional: limit the video height to 80% of the viewport height
+    
+        // Create a button to unmute the player
+        const unmuteButton = document.createElement(&#39;button&#39;);
+        unmuteButton.textContent = &#39;Unmute&#39;;
+    
+        // Style the button to make it bigger
+        unmuteButton.style.fontSize = &#39;30px&#39;; // Larger font size
+        unmuteButton.style.padding = &#39;20px 40px&#39;; // Larger button size
+        unmuteButton.style.backgroundColor = &#39;#007BFF&#39;; // Button color
+        unmuteButton.style.color = &#39;white&#39;; // Text color
+        unmuteButton.style.border = &#39;none&#39;; // Remove border
+        unmuteButton.style.borderRadius = &#39;10px&#39;; // Rounded corners
+        unmuteButton.style.cursor = &#39;pointer&#39;; // Pointer cursor on hover
+        unmuteButton.style.position = &#39;absolute&#39;; // Absolute positioning
+        unmuteButton.style.top = &#39;50%&#39;; // Vertically center
+        unmuteButton.style.left = &#39;50%&#39;; // Horizontally center
+        unmuteButton.style.transform = &#39;translate(-50%, -50%)&#39;; // Adjust for exact centering
+    
+        // Add an event listener to the button
+        unmuteButton.addEventListener(&#39;click&#39;, () =&gt; {
+            videoElement.muted = false; // Unmute the video
+            unmuteButton.remove(); // Remove the button once clicked
+        });
+ 
+        // Add the button to the DOM
+        document.body.appendChild(unmuteButton);
+ 
+   &lt;/script&gt;
+  &lt;/body&gt;
+</code></pre></div><footer class=post-footer><ul class=post-tags></ul></footer></article></main><footer class=footer><span>&copy; 2026 <a href=http://localhost:1313/>uly.me</a></span> ·
+<span>Powered by
+<a href="https://gohugo.io/?utm_source=papermod" rel=noopener target=_blank>Hugo</a> &
+<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top id=top-link class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey=g><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up"><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg>
+</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10));let t;menu.addEventListener("scroll",function(){clearTimeout(t),t=setTimeout(function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)},150)},{passive:!0})}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var n=this.getAttribute("href").substr(1);const t=document.querySelector(`[id='${decodeURIComponent(n)}']`);window.matchMedia("(prefers-reduced-motion: reduce)").matches?t.scrollIntoView():t.scrollIntoView({behavior:"smooth"}),t.tabIndex<0&&!t.hasAttribute("tabindex")&&t.setAttribute("tabindex","-1"),t.focus({preventScroll:!0}),n==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${n}`)})})</script><script>var toplink=document.getElementById("top-link"),scrollTicking=!1;window.addEventListener("scroll",function(){if(scrollTicking)return;scrollTicking=!0,requestAnimationFrame(function(){const e=window.innerHeight,t=document.body.scrollTop>e||document.documentElement.scrollTop>e;toplink.classList.toggle("hidden",!t),scrollTicking=!1})},{passive:!0})</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copy";function s(){t.innerHTML="copied!",setTimeout(()=>{t.innerHTML="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>

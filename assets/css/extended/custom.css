@@ -1,0 +1,31 @@
+
+/* Increase PaperMod content width */
+
+:root {
+    --main-width: 1100px;
+    --nav-width: 1100px;
+    --article-width: 900px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 30px 0;
+}
+
+.pagination .page-link {
+    padding: 7px 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.pagination .page-link.active {
+    background: var(--primary);
+    color: var(--theme);
+    font-weight: bold;
+}
+

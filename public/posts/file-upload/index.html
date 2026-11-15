@@ -1,0 +1,124 @@
+<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>file upload | uly.me</title><meta name=keywords content><meta name=description content="I created a page for uploading file using HTML, PHP, CSS and Javascript.
+
+HTML displays the page
+PHP handles the input form
+Javascript displays the upload status
+CSS provides styling and spinning status
+Using the Roboto Google font
+
+In addition, I also had to tweak the /etc/php.ini settings to allow upload of large files.
+file_uploads = On
+upload_max_filesize = 200M
+post_max_size = 200M
+max_file_uploads = 20
+Here&rsquo;s the code all wrapped in a single file."><meta name=author content="ulysses"><link rel=canonical href=http://localhost:1313/posts/file-upload/><link crossorigin=anonymous href=/assets/css/stylesheet.48e934b40b9f1f2e81cbdf21a7e315daf1bd35aafc45067711b26ed16bbc3829.css integrity="sha256-SOk0tAufHy6By98hp+MV2vG9Nar8RQZ3EbJu0Wu8OCk=" rel="preload stylesheet" as=style><link rel=icon href=http://localhost:1313/favicon.ico><link rel=icon type=image/png sizes=16x16 href=http://localhost:1313/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=http://localhost:1313/favicon-32x32.png><link rel=apple-touch-icon href=http://localhost:1313/apple-touch-icon.png><link rel=mask-icon href=http://localhost:1313/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=http://localhost:1313/posts/file-upload/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="http://localhost:1313/posts/file-upload/"><meta property="og:site_name" content="uly.me"><meta property="og:title" content="file upload"><meta property="og:description" content="I created a page for uploading file using HTML, PHP, CSS and Javascript.
+HTML displays the page PHP handles the input form Javascript displays the upload status CSS provides styling and spinning status Using the Roboto Google font In addition, I also had to tweak the /etc/php.ini settings to allow upload of large files.
+file_uploads = On upload_max_filesize = 200M post_max_size = 200M max_file_uploads = 20 Here’s the code all wrapped in a single file."><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2025-12-02T00:00:00+00:00"><meta property="article:modified_time" content="2025-12-02T00:00:00+00:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="file upload"><meta name=twitter:description content="I created a page for uploading file using HTML, PHP, CSS and Javascript.
+HTML displays the page PHP handles the input form Javascript displays the upload status CSS provides styling and spinning status Using the Roboto Google font In addition, I also had to tweak the /etc/php.ini settings to allow upload of large files.
+file_uploads = On upload_max_filesize = 200M post_max_size = 200M max_file_uploads = 20 Here’s the code all wrapped in a single file."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"http://localhost:1313/posts/"},{"@type":"ListItem","position":2,"name":"file upload","item":"http://localhost:1313/posts/file-upload/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"file upload","name":"file upload","description":"I created a page for uploading file using HTML, PHP, CSS and Javascript.\nHTML displays the page PHP handles the input form Javascript displays the upload status CSS provides styling and spinning status Using the Roboto Google font In addition, I also had to tweak the /etc/php.ini settings to allow upload of large files.\nfile_uploads = On upload_max_filesize = 200M post_max_size = 200M max_file_uploads = 20 Here\u0026rsquo;s the code all wrapped in a single file.\n","keywords":[],"articleBody":"I created a page for uploading file using HTML, PHP, CSS and Javascript.\nHTML displays the page PHP handles the input form Javascript displays the upload status CSS provides styling and spinning status Using the Roboto Google font In addition, I also had to tweak the /etc/php.ini settings to allow upload of large files.\nfile_uploads = On upload_max_filesize = 200M post_max_size = 200M max_file_uploads = 20 Here’s the code all wrapped in a single file.\nUpload Files: Click on the \"Choose Files\" button. You can select one or multiple files to upload. Once files are selected, click on the Upload button to begin the upload process. Depending on file size(s), the upload process could take a few seconds to a few minutes. Please be patient. If uploads are successful, there will be a message saying 'files uploaded successfully.' Select files to upload: Upload \u003c?php if ($_SERVER['REQUEST_METHOD'] === 'POST') { $uploadDir = 'uploads/'; // Ensure the directory exists if (!is_dir($uploadDir)) { mkdir($uploadDir, 0755, true); } // Check if files were uploaded if (isset($_FILES['files'])) { $totalFiles = count($_FILES['files']['name']); for ($i = 0; $i \u003c $totalFiles; $i++) { if ($_FILES['files']['error'][$i] === UPLOAD_ERR_OK) { $fileName = basename($_FILES['files']['name'][$i]); $targetFile = $uploadDir . $fileName; if (move_uploaded_file($_FILES['files']['tmp_name'][$i], $targetFile)) { echo \"File uploaded successfully: \" . htmlspecialchars($fileName) . \"\n\"; } else { echo \"Error uploading file: \" . htmlspecialchars($fileName) . \"\n\"; } } else { echo \"Error with file: \" . htmlspecialchars($_FILES['files']['name'][$i]) . \"\n\"; } } } else { echo \"No files uploaded.\"; } } ?\u003e Upload More Files: Reload Page To Start Another Upload\n","wordCount":"395","inLanguage":"en","datePublished":"2025-12-02T00:00:00Z","dateModified":"2025-12-02T00:00:00Z","author":{"@type":"Person","name":"ulysses"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:1313/posts/file-upload/"},"publisher":{"@type":"Organization","name":"uly.me","logo":{"@type":"ImageObject","url":"http://localhost:1313/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=header-nav><div class=logo><a href=http://localhost:1313/ accesskey=h title="uly.me (Alt + H)">uly.me</a><div class=logo-switches><button id=theme-toggle class=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
+<svg class="moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+<svg class="sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu class=menu><li><a href=http://localhost:1313/ title=Home><span>Home</span></a></li><li><a href=http://localhost:1313/about/ title=About><span>About</span></a></li><li><a href=http://localhost:1313/archives/ title=Archives><span>Archives</span></a></li><li><a href=http://localhost:1313/search/ title="Search (Alt + /)" accesskey=/><span>Search</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><nav class=breadcrumbs role=navigation aria-label=Breadcrumb><a href=/>Home</a>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"/></svg>
+<a href=/posts/>Posts</a>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"/></svg></nav><h1 class="post-title entry-hint-parent">file upload</h1><div class=post-meta><span title=2025-12-02T00:00:00+00:00>December 2, 2025</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>ulysses</span></div></header><div class="post-content md-content"><p>I created a page for uploading file using HTML, PHP, CSS and Javascript.</p><ul><li>HTML displays the page</li><li>PHP handles the input form</li><li>Javascript displays the upload status</li><li>CSS provides styling and spinning status</li><li>Using the Roboto Google font</li></ul><p>In addition, I also had to tweak the /etc/php.ini settings to allow upload of large files.</p><pre tabindex=0><code>file_uploads = On
+upload_max_filesize = 200M
+post_max_size = 200M
+max_file_uploads = 20
+</code></pre><p>Here&rsquo;s the code all wrapped in a single file.</p><pre tabindex=0><code>&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+@import url(&#39;https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&amp;display=swap&#39;);
+body {
+   font-family: Roboto, sans-serif;
+   font-optical-sizing: normal;
+   font-weight: 400;
+   font-style: normal;
+   background-color: #222;
+   color: #000;
+}
+.content {
+   width: 1080px;
+   margin: 20px auto;
+   padding: 20px;
+   background-color: #fff;
+   min-height: 90vh;
+}
+.loader {
+  border: 5px solid #f3f3f3; /* Light grey */
+  border-top: 5px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 2s linear infinite;
+  display: none; /* Hide loader by default */
+  margin-left: 10px;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+hr {
+  border: 1px solid #777;
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&#34;content&#34;&gt;
+&lt;h3&gt;Upload Files:&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Click on the &#34;Choose Files&#34; button.&lt;/li&gt;
+&lt;li&gt;You can select one or multiple files to upload.&lt;/li&gt;
+&lt;li&gt;Once files are selected, click on the Upload button to begin the upload process.&lt;/li&gt;
+&lt;li&gt;Depending on file size(s), the upload process could take a few seconds to a few minutes. Please be patient.&lt;/li&gt;
+&lt;li&gt;If uploads are successful, there will be a message saying &#39;files uploaded successfully.&#39;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;form id=&#34;uploadForm&#34; action=&#34;&#34; method=&#34;post&#34; enctype=&#34;multipart/form-data&#34;&gt;
+    &lt;label&gt;Select files to upload:&lt;/label&gt;
+    &lt;input id=&#34;fileInput&#34; type=&#34;file&#34; name=&#34;files[]&#34; multiple required&gt;
+    &lt;button type=&#34;submit&#34;&gt;Upload&lt;/button&gt;
+&lt;/form&gt;
+&lt;div class=&#34;loader&#34; id=&#34;loader&#34;&gt;&lt;/div&gt;
+&lt;?php
+if ($_SERVER[&#39;REQUEST_METHOD&#39;] === &#39;POST&#39;) {
+    $uploadDir = &#39;uploads/&#39;;
+    // Ensure the directory exists
+    if (!is_dir($uploadDir)) {
+        mkdir($uploadDir, 0755, true);
+    }
+    // Check if files were uploaded
+    if (isset($_FILES[&#39;files&#39;])) {
+        $totalFiles = count($_FILES[&#39;files&#39;][&#39;name&#39;]);
+        for ($i = 0; $i &lt; $totalFiles; $i++) {
+            if ($_FILES[&#39;files&#39;][&#39;error&#39;][$i] === UPLOAD_ERR_OK) {
+                $fileName = basename($_FILES[&#39;files&#39;][&#39;name&#39;][$i]);
+                $targetFile = $uploadDir . $fileName;
+                if (move_uploaded_file($_FILES[&#39;files&#39;][&#39;tmp_name&#39;][$i], $targetFile)) {
+                    echo &#34;File uploaded successfully: &#34; . htmlspecialchars($fileName) . &#34;&lt;br&gt;&#34;;
+                } else {
+                    echo &#34;Error uploading file: &#34; . htmlspecialchars($fileName) . &#34;&lt;br&gt;&#34;;
+                }
+            } else {
+                echo &#34;Error with file: &#34; . htmlspecialchars($_FILES[&#39;files&#39;][&#39;name&#39;][$i]) . &#34;&lt;br&gt;&#34;;
+            }
+        }
+    } else {
+        echo &#34;No files uploaded.&#34;;
+    }
+}
+?&gt;
+&lt;script&gt;
+document.getElementById(&#39;uploadForm&#39;).addEventListener(&#39;submit&#39;, function() {
+    // Show loader when form is submitted
+    document.getElementById(&#39;loader&#39;).style.display = &#39;block&#39;;
+});
+&lt;/script&gt;
+&lt;h3&gt;Upload More Files:&lt;/h3&gt;
+&lt;p&gt;&lt;button onclick=&#34;document.location=&#39;upload.php&#39;&#34;&gt;Reload Page To Start Another Upload&lt;/button&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div><footer class=post-footer><ul class=post-tags></ul></footer></article></main><footer class=footer><span>&copy; 2026 <a href=http://localhost:1313/>uly.me</a></span> ·
+<span>Powered by
+<a href="https://gohugo.io/?utm_source=papermod" rel=noopener target=_blank>Hugo</a> &
+<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top id=top-link class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey=g><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up"><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg>
+</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10));let t;menu.addEventListener("scroll",function(){clearTimeout(t),t=setTimeout(function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)},150)},{passive:!0})}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var n=this.getAttribute("href").substr(1);const t=document.querySelector(`[id='${decodeURIComponent(n)}']`);window.matchMedia("(prefers-reduced-motion: reduce)").matches?t.scrollIntoView():t.scrollIntoView({behavior:"smooth"}),t.tabIndex<0&&!t.hasAttribute("tabindex")&&t.setAttribute("tabindex","-1"),t.focus({preventScroll:!0}),n==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${n}`)})})</script><script>var toplink=document.getElementById("top-link"),scrollTicking=!1;window.addEventListener("scroll",function(){if(scrollTicking)return;scrollTicking=!0,requestAnimationFrame(function(){const e=window.innerHeight,t=document.body.scrollTop>e||document.documentElement.scrollTop>e;toplink.classList.toggle("hidden",!t),scrollTicking=!1})},{passive:!0})</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copy";function s(){t.innerHTML="copied!",setTimeout(()=>{t.innerHTML="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>

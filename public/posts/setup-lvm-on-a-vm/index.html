@@ -1,0 +1,120 @@
+<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>setup lvm on a vm | uly.me</title><meta name=keywords content><meta name=description content='How to setup Logical Volume Manager on a VM.
+Install LVM.
+yum install lvm2
+Check the disks available. We are going to run LVM on /dev/sdb.
+$ lsblk
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda      8:0    0   20G  0 disk 
+├─sda1   8:1    0  200M  0 part /boot/efi
+└─sda2   8:2    0 19.8G  0 part /
+sdb      8:16   0   20G  0 disk
+Create a physical volume on /dev/sdb.
+$ pvcreate /dev/sdb
+  Physical volume "/dev/sdb" successfully created.
+$ pvs
+  PV         VG Fmt  Attr PSize   PFree
+  /dev/sdb   vg lvm2 a--  
+Create a volume group called vg.'><meta name=author content="ulysses"><link rel=canonical href=http://localhost:1313/posts/setup-lvm-on-a-vm/><link crossorigin=anonymous href=/assets/css/stylesheet.48e934b40b9f1f2e81cbdf21a7e315daf1bd35aafc45067711b26ed16bbc3829.css integrity="sha256-SOk0tAufHy6By98hp+MV2vG9Nar8RQZ3EbJu0Wu8OCk=" rel="preload stylesheet" as=style><link rel=icon href=http://localhost:1313/favicon.ico><link rel=icon type=image/png sizes=16x16 href=http://localhost:1313/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=http://localhost:1313/favicon-32x32.png><link rel=apple-touch-icon href=http://localhost:1313/apple-touch-icon.png><link rel=mask-icon href=http://localhost:1313/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=http://localhost:1313/posts/setup-lvm-on-a-vm/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="http://localhost:1313/posts/setup-lvm-on-a-vm/"><meta property="og:site_name" content="uly.me"><meta property="og:title" content="setup lvm on a vm"><meta property="og:description" content='How to setup Logical Volume Manager on a VM.
+Install LVM.
+yum install lvm2 Check the disks available. We are going to run LVM on /dev/sdb.
+$ lsblk NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT sda 8:0 0 20G 0 disk ├─sda1 8:1 0 200M 0 part /boot/efi └─sda2 8:2 0 19.8G 0 part / sdb 8:16 0 20G 0 disk Create a physical volume on /dev/sdb.
+$ pvcreate /dev/sdb Physical volume "/dev/sdb" successfully created. $ pvs PV VG Fmt Attr PSize PFree /dev/sdb vg lvm2 a-- Create a volume group called vg.'><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2022-02-05T00:00:00+00:00"><meta property="article:modified_time" content="2022-02-05T00:00:00+00:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="setup lvm on a vm"><meta name=twitter:description content='How to setup Logical Volume Manager on a VM.
+Install LVM.
+yum install lvm2 Check the disks available. We are going to run LVM on /dev/sdb.
+$ lsblk NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT sda 8:0 0 20G 0 disk ├─sda1 8:1 0 200M 0 part /boot/efi └─sda2 8:2 0 19.8G 0 part / sdb 8:16 0 20G 0 disk Create a physical volume on /dev/sdb.
+$ pvcreate /dev/sdb Physical volume "/dev/sdb" successfully created. $ pvs PV VG Fmt Attr PSize PFree /dev/sdb vg lvm2 a-- Create a volume group called vg.'><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"http://localhost:1313/posts/"},{"@type":"ListItem","position":2,"name":"setup lvm on a vm","item":"http://localhost:1313/posts/setup-lvm-on-a-vm/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"setup lvm on a vm","name":"setup lvm on a vm","description":"How to setup Logical Volume Manager on a VM.\nInstall LVM.\nyum install lvm2 Check the disks available. We are going to run LVM on /dev/sdb.\n$ lsblk NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT sda 8:0 0 20G 0 disk ├─sda1 8:1 0 200M 0 part /boot/efi └─sda2 8:2 0 19.8G 0 part / sdb 8:16 0 20G 0 disk Create a physical volume on /dev/sdb.\n$ pvcreate /dev/sdb Physical volume \u0026#34;/dev/sdb\u0026#34; successfully created. $ pvs PV VG Fmt Attr PSize PFree /dev/sdb vg lvm2 a-- Create a volume group called vg.\n","keywords":[],"articleBody":"How to setup Logical Volume Manager on a VM.\nInstall LVM.\nyum install lvm2 Check the disks available. We are going to run LVM on /dev/sdb.\n$ lsblk NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT sda 8:0 0 20G 0 disk ├─sda1 8:1 0 200M 0 part /boot/efi └─sda2 8:2 0 19.8G 0 part / sdb 8:16 0 20G 0 disk Create a physical volume on /dev/sdb.\n$ pvcreate /dev/sdb Physical volume \"/dev/sdb\" successfully created. $ pvs PV VG Fmt Attr PSize PFree /dev/sdb vg lvm2 a-- Create a volume group called vg.\n$ vgcreate vg /dev/sdb Volume group \"vg\" successfully created $ vgs VG #PV #LV #SN Attr VSize VFree vg 1 0 0 wz--n- Create a 10GB logical volume group called data.\n$ lvcreate -L 10G -n data vg Logical volume \"data\" created. $ lvs LV VG Attr LSize Pool Origin Data% Meta% Move Log Cpy%Sync Convert data vg -wi-a----- 10.00g Format the volume group and mount it.\n$ mkfs.xfs /dev/vg/data meta-data=/dev/vg/data isize=512 agcount=4, agsize=655360 blks = sectsz=4096 attr=2, projid32bit=1 = crc=1 finobt=1, sparse=1, rmapbt=0 = reflink=1 data = bsize=4096 blocks=2621440, imaxpct=25 = sunit=0 swidth=0 blks naming =version 2 bsize=4096 ascii-ci=0, ftype=1 log =internal log bsize=4096 blocks=2560, version=2 = sectsz=4096 sunit=1 blks, lazy-count=1 realtime =none extsz=4096 blocks=0, rtextents=0 Discarding blocks...Done. $ mount /dev/vg/data /mnt Check your logical volume. It says 10GB.\n$ df -Th Filesystem Type Size Used Avail Use% Mounted on devtmpfs devtmpfs 385M 0 385M 0% /dev tmpfs tmpfs 403M 0 403M 0% /dev/shm tmpfs tmpfs 403M 5.5M 398M 2% /run tmpfs tmpfs 403M 0 403M 0% /sys/fs/cgroup /dev/sda2 xfs 20G 2.9G 17G 15% / /dev/sda1 vfat 200M 5.8M 195M 3% /boot/efi tmpfs tmpfs 81M 0 81M 0% /run/user/1000 /dev/mapper/vg-data xfs 10G 104M 9.9G 2% /mnt Let’s now extend the logical volume to 20GB.\n$ lvextend -l +100%FREE /dev/vg/data Size of logical volume vg/data changed from 10.00 GiB (2560 extents) to Although lsblk says 20GB, our logical volume still says 10GB\n$ lsblk NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT sda 8:0 0 20G 0 disk ├─sda1 8:1 0 200M 0 part /boot/efi └─sda2 8:2 0 19.8G 0 part / sdb 8:16 0 20G 0 disk └─vg-data 253:0 0 20G 0 lvm /mnt $ df -Th Filesystem Type Size Used Avail Use% Mounted on devtmpfs devtmpfs 385M 0 385M 0% /dev tmpfs tmpfs 403M 0 403M 0% /dev/shm tmpfs tmpfs 403M 5.5M 398M 2% /run tmpfs tmpfs 403M 0 403M 0% /sys/fs/cgroup /dev/sda2 xfs 20G 2.9G 17G 15% / /dev/sda1 vfat 200M 5.8M 195M 3% /boot/efi tmpfs tmpfs 81M 0 81M 0% /run/user/1000 /dev/mapper/vg-data xfs 10G 104M 9.9G 2% /mnt We need to grow the file system.\n$ xfs_growfs /dev/vg/data meta-data=/dev/mapper/vg-data isize=512 agcount=4, agsize=655360 blks = sectsz=4096 attr=2, projid32bit=1 = crc=1 finobt=1, sparse=1, rmapbt=0 = reflink=1 data = bsize=4096 blocks=2621440, imaxpct=25 = sunit=0 swidth=0 blks naming =version 2 bsize=4096 ascii-ci=0, ftype=1 log =internal log bsize=4096 blocks=2560, version=2 = sectsz=4096 sunit=1 blks, lazy-count=1 realtime =none extsz=4096 blocks=0, rtextents=0 data blocks changed from 2621440 to 5241856 Let’s check again.\n$ df -Th Filesystem Type Size Used Avail Use% Mounted on devtmpfs devtmpfs 385M 0 385M 0% /dev tmpfs tmpfs 403M 0 403M 0% /dev/shm tmpfs tmpfs 403M 5.5M 398M 2% /run tmpfs tmpfs 403M 0 403M 0% /sys/fs/cgroup /dev/sda2 xfs 20G 2.9G 17G 15% / /dev/sda1 vfat 200M 5.8M 195M 3% /boot/efi tmpfs tmpfs 81M 0 81M 0% /run/user/1000 /dev/mapper/vg-data xfs 20G 176M 20G 1% /mnt It now says 20GB.\n","wordCount":"572","inLanguage":"en","datePublished":"2022-02-05T00:00:00Z","dateModified":"2022-02-05T00:00:00Z","author":{"@type":"Person","name":"ulysses"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:1313/posts/setup-lvm-on-a-vm/"},"publisher":{"@type":"Organization","name":"uly.me","logo":{"@type":"ImageObject","url":"http://localhost:1313/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=header-nav><div class=logo><a href=http://localhost:1313/ accesskey=h title="uly.me (Alt + H)">uly.me</a><div class=logo-switches><button id=theme-toggle class=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
+<svg class="moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+<svg class="sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu class=menu><li><a href=http://localhost:1313/ title=Home><span>Home</span></a></li><li><a href=http://localhost:1313/about/ title=About><span>About</span></a></li><li><a href=http://localhost:1313/archives/ title=Archives><span>Archives</span></a></li><li><a href=http://localhost:1313/search/ title="Search (Alt + /)" accesskey=/><span>Search</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><nav class=breadcrumbs role=navigation aria-label=Breadcrumb><a href=/>Home</a>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"/></svg>
+<a href=/posts/>Posts</a>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"/></svg></nav><h1 class="post-title entry-hint-parent">setup lvm on a vm</h1><div class=post-meta><span title=2022-02-05T00:00:00+00:00>February 5, 2022</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>ulysses</span></div></header><div class="post-content md-content"><p>How to setup Logical Volume Manager on a VM.</p><p>Install LVM.</p><pre tabindex=0><code>yum install lvm2
+</code></pre><p>Check the disks available. We are going to run LVM on /dev/sdb.</p><pre tabindex=0><code>$ lsblk
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda      8:0    0   20G  0 disk 
+├─sda1   8:1    0  200M  0 part /boot/efi
+└─sda2   8:2    0 19.8G  0 part /
+sdb      8:16   0   20G  0 disk
+</code></pre><p>Create a physical volume on /dev/sdb.</p><pre tabindex=0><code>$ pvcreate /dev/sdb
+  Physical volume &#34;/dev/sdb&#34; successfully created.
+$ pvs
+  PV         VG Fmt  Attr PSize   PFree
+  /dev/sdb   vg lvm2 a--  
+</code></pre><p>Create a volume group called vg.</p><pre tabindex=0><code>$ vgcreate vg /dev/sdb
+  Volume group &#34;vg&#34; successfully created
+$ vgs
+  VG #PV #LV #SN Attr   VSize   VFree  
+  vg   1   0   0 wz--n- 
+</code></pre><p>Create a 10GB logical volume group called data.</p><pre tabindex=0><code>$ lvcreate -L 10G -n data vg
+  Logical volume &#34;data&#34; created.
+$ lvs
+  LV   VG Attr       LSize  Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  data vg -wi-a----- 10.00g
+</code></pre><p>Format the volume group and mount it.</p><pre tabindex=0><code>$ mkfs.xfs /dev/vg/data
+meta-data=/dev/vg/data           isize=512    agcount=4, agsize=655360 blks
+         =                       sectsz=4096  attr=2, projid32bit=1
+         =                       crc=1        finobt=1, sparse=1, rmapbt=0
+         =                       reflink=1
+data     =                       bsize=4096   blocks=2621440, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0, ftype=1
+log      =internal log           bsize=4096   blocks=2560, version=2
+         =                       sectsz=4096  sunit=1 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+Discarding blocks...Done.
+$ mount /dev/vg/data /mnt
+</code></pre><p>Check your logical volume. It says 10GB.</p><pre tabindex=0><code>$ df -Th
+Filesystem          Type      Size  Used Avail Use% Mounted on
+devtmpfs            devtmpfs  385M     0  385M   0% /dev
+tmpfs               tmpfs     403M     0  403M   0% /dev/shm
+tmpfs               tmpfs     403M  5.5M  398M   2% /run
+tmpfs               tmpfs     403M     0  403M   0% /sys/fs/cgroup
+/dev/sda2           xfs        20G  2.9G   17G  15% /
+/dev/sda1           vfat      200M  5.8M  195M   3% /boot/efi
+tmpfs               tmpfs      81M     0   81M   0% /run/user/1000
+/dev/mapper/vg-data xfs        10G  104M  9.9G   2% /mnt
+</code></pre><p>Let&rsquo;s now extend the logical volume to 20GB.</p><pre tabindex=0><code>$ lvextend -l +100%FREE /dev/vg/data
+  Size of logical volume vg/data changed from 10.00 GiB (2560 extents) to 
+</code></pre><p>Although lsblk says 20GB, our logical volume still says 10GB</p><pre tabindex=0><code>$ lsblk
+NAME      MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda         8:0    0   20G  0 disk 
+├─sda1      8:1    0  200M  0 part /boot/efi
+└─sda2      8:2    0 19.8G  0 part /
+sdb         8:16   0   20G  0 disk 
+└─vg-data 253:0    0   20G  0 lvm  /mnt
+$ df -Th
+Filesystem          Type      Size  Used Avail Use% Mounted on
+devtmpfs            devtmpfs  385M     0  385M   0% /dev
+tmpfs               tmpfs     403M     0  403M   0% /dev/shm
+tmpfs               tmpfs     403M  5.5M  398M   2% /run
+tmpfs               tmpfs     403M     0  403M   0% /sys/fs/cgroup
+/dev/sda2           xfs        20G  2.9G   17G  15% /
+/dev/sda1           vfat      200M  5.8M  195M   3% /boot/efi
+tmpfs               tmpfs      81M     0   81M   0% /run/user/1000
+/dev/mapper/vg-data xfs        10G  104M  9.9G   2% /mnt
+</code></pre><p>We need to grow the file system.</p><pre tabindex=0><code>$ xfs_growfs /dev/vg/data
+meta-data=/dev/mapper/vg-data    isize=512    agcount=4, agsize=655360 blks
+         =                       sectsz=4096  attr=2, projid32bit=1
+         =                       crc=1        finobt=1, sparse=1, rmapbt=0
+         =                       reflink=1
+data     =                       bsize=4096   blocks=2621440, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0, ftype=1
+log      =internal log           bsize=4096   blocks=2560, version=2
+         =                       sectsz=4096  sunit=1 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+data blocks changed from 2621440 to 5241856
+</code></pre><p>Let&rsquo;s check again.</p><pre tabindex=0><code>$ df -Th
+Filesystem          Type      Size  Used Avail Use% Mounted on
+devtmpfs            devtmpfs  385M     0  385M   0% /dev
+tmpfs               tmpfs     403M     0  403M   0% /dev/shm
+tmpfs               tmpfs     403M  5.5M  398M   2% /run
+tmpfs               tmpfs     403M     0  403M   0% /sys/fs/cgroup
+/dev/sda2           xfs        20G  2.9G   17G  15% /
+/dev/sda1           vfat      200M  5.8M  195M   3% /boot/efi
+tmpfs               tmpfs      81M     0   81M   0% /run/user/1000
+/dev/mapper/vg-data xfs        20G  176M   20G   1% /mnt
+</code></pre><p>It now says 20GB.</p></div><footer class=post-footer><ul class=post-tags></ul></footer></article></main><footer class=footer><span>&copy; 2026 <a href=http://localhost:1313/>uly.me</a></span> ·
+<span>Powered by
+<a href="https://gohugo.io/?utm_source=papermod" rel=noopener target=_blank>Hugo</a> &
+<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top id=top-link class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey=g><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up"><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg>
+</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10));let t;menu.addEventListener("scroll",function(){clearTimeout(t),t=setTimeout(function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)},150)},{passive:!0})}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var n=this.getAttribute("href").substr(1);const t=document.querySelector(`[id='${decodeURIComponent(n)}']`);window.matchMedia("(prefers-reduced-motion: reduce)").matches?t.scrollIntoView():t.scrollIntoView({behavior:"smooth"}),t.tabIndex<0&&!t.hasAttribute("tabindex")&&t.setAttribute("tabindex","-1"),t.focus({preventScroll:!0}),n==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${n}`)})})</script><script>var toplink=document.getElementById("top-link"),scrollTicking=!1;window.addEventListener("scroll",function(){if(scrollTicking)return;scrollTicking=!0,requestAnimationFrame(function(){const e=window.innerHeight,t=document.body.scrollTop>e||document.documentElement.scrollTop>e;toplink.classList.toggle("hidden",!t),scrollTicking=!1})},{passive:!0})</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copy";function s(){t.innerHTML="copied!",setTimeout(()=>{t.innerHTML="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>

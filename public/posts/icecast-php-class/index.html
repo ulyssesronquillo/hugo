@@ -1,0 +1,156 @@
+<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>icecast php class | uly.me</title><meta name=keywords content><meta name=description content="I modified an existing Icecast PHP class that I found online. I’ve added a couple of extra fields particularly the ‘status’ field where you’ll be able to determine if your Icecast server is streaming or not. I’ve initially set the status variable to ‘On Air’ and ‘Off Air.’ To use the class, take a look at the code below:
+// include the class file
+include( 'icecast.php' );
+
+// instantiate class
+$stream = new IceCast();
+
+// set server and mount
+$server = 'http://yourdomain.com:8001';
+$file   = '/status.xsl?mount=/yourmount.ogg';
+
+// set the url
+$stream->setUrl($server,$file);
+
+// get status info
+$radio = $stream->getStatus();
+
+// assign array to variables
+extract($radio);
+
+// echo the status
+echo $status.'<br></br>';
+
+// display more stats if ON AIR
+if ($status=='ON AIR') :
+echo $listeners.' listeners<br></br>';
+echo $most_listeners.' max listeners<br></br>';
+endif;
+Here’s the Icecast class."><meta name=author content="ulysses"><link rel=canonical href=http://localhost:1313/posts/icecast-php-class/><link crossorigin=anonymous href=/assets/css/stylesheet.48e934b40b9f1f2e81cbdf21a7e315daf1bd35aafc45067711b26ed16bbc3829.css integrity="sha256-SOk0tAufHy6By98hp+MV2vG9Nar8RQZ3EbJu0Wu8OCk=" rel="preload stylesheet" as=style><link rel=icon href=http://localhost:1313/favicon.ico><link rel=icon type=image/png sizes=16x16 href=http://localhost:1313/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=http://localhost:1313/favicon-32x32.png><link rel=apple-touch-icon href=http://localhost:1313/apple-touch-icon.png><link rel=mask-icon href=http://localhost:1313/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=http://localhost:1313/posts/icecast-php-class/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="http://localhost:1313/posts/icecast-php-class/"><meta property="og:site_name" content="uly.me"><meta property="og:title" content="icecast php class"><meta property="og:description" content="I modified an existing Icecast PHP class that I found online. I’ve added a couple of extra fields particularly the ‘status’ field where you’ll be able to determine if your Icecast server is streaming or not. I’ve initially set the status variable to ‘On Air’ and ‘Off Air.’ To use the class, take a look at the code below:
+// include the class file include( 'icecast.php' ); // instantiate class $stream = new IceCast(); // set server and mount $server = 'http://yourdomain.com:8001'; $file = '/status.xsl?mount=/yourmount.ogg'; // set the url $stream->setUrl($server,$file); // get status info $radio = $stream->getStatus(); // assign array to variables extract($radio); // echo the status echo $status.'<br></br>'; // display more stats if ON AIR if ($status=='ON AIR') : echo $listeners.' listeners<br></br>'; echo $most_listeners.' max listeners<br></br>'; endif; Here’s the Icecast class."><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2014-03-14T00:00:00+00:00"><meta property="article:modified_time" content="2014-03-14T00:00:00+00:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="icecast php class"><meta name=twitter:description content="I modified an existing Icecast PHP class that I found online. I’ve added a couple of extra fields particularly the ‘status’ field where you’ll be able to determine if your Icecast server is streaming or not. I’ve initially set the status variable to ‘On Air’ and ‘Off Air.’ To use the class, take a look at the code below:
+// include the class file include( 'icecast.php' ); // instantiate class $stream = new IceCast(); // set server and mount $server = 'http://yourdomain.com:8001'; $file = '/status.xsl?mount=/yourmount.ogg'; // set the url $stream->setUrl($server,$file); // get status info $radio = $stream->getStatus(); // assign array to variables extract($radio); // echo the status echo $status.'<br></br>'; // display more stats if ON AIR if ($status=='ON AIR') : echo $listeners.' listeners<br></br>'; echo $most_listeners.' max listeners<br></br>'; endif; Here’s the Icecast class."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"http://localhost:1313/posts/"},{"@type":"ListItem","position":2,"name":"icecast php class","item":"http://localhost:1313/posts/icecast-php-class/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"icecast php class","name":"icecast php class","description":"I modified an existing Icecast PHP class that I found online. I’ve added a couple of extra fields particularly the ‘status’ field where you’ll be able to determine if your Icecast server is streaming or not. I’ve initially set the status variable to ‘On Air’ and ‘Off Air.’ To use the class, take a look at the code below:\n// include the class file include( \u0026#39;icecast.php\u0026#39; ); // instantiate class $stream = new IceCast(); // set server and mount $server = \u0026#39;http://yourdomain.com:8001\u0026#39;; $file = \u0026#39;/status.xsl?mount=/yourmount.ogg\u0026#39;; // set the url $stream-\u0026gt;setUrl($server,$file); // get status info $radio = $stream-\u0026gt;getStatus(); // assign array to variables extract($radio); // echo the status echo $status.\u0026#39;\u0026lt;br\u0026gt;\u0026lt;/br\u0026gt;\u0026#39;; // display more stats if ON AIR if ($status==\u0026#39;ON AIR\u0026#39;) : echo $listeners.\u0026#39; listeners\u0026lt;br\u0026gt;\u0026lt;/br\u0026gt;\u0026#39;; echo $most_listeners.\u0026#39; max listeners\u0026lt;br\u0026gt;\u0026lt;/br\u0026gt;\u0026#39;; endif; Here’s the Icecast class.\n","keywords":[],"articleBody":"I modified an existing Icecast PHP class that I found online. I’ve added a couple of extra fields particularly the ‘status’ field where you’ll be able to determine if your Icecast server is streaming or not. I’ve initially set the status variable to ‘On Air’ and ‘Off Air.’ To use the class, take a look at the code below:\n// include the class file include( 'icecast.php' ); // instantiate class $stream = new IceCast(); // set server and mount $server = 'http://yourdomain.com:8001'; $file = '/status.xsl?mount=/yourmount.ogg'; // set the url $stream-\u003esetUrl($server,$file); // get status info $radio = $stream-\u003egetStatus(); // assign array to variables extract($radio); // echo the status echo $status.'\n'; // display more stats if ON AIR if ($status=='ON AIR') : echo $listeners.' listeners\n'; echo $most_listeners.' max listeners\n'; endif; Here’s the Icecast class.\nclass IceCast { var $server = \"http://yourdomain.com:8001\"; var $stats_file = \"/status.xsl?mount=/yourmount.ogg\"; var $radio_info=array(); function __construct() { // build array to store our Icecast stats $this-\u003eradio_info['server'] = $this-\u003eserver; $this-\u003eradio_info['title'] = ''; $this-\u003eradio_info['description'] = ''; $this-\u003eradio_info['content_type'] = ''; $this-\u003eradio_info['mount_start'] = ''; $this-\u003eradio_info['bit_rate'] = ''; $this-\u003eradio_info['listeners'] = ''; $this-\u003eradio_info['most_listeners'] = ''; $this-\u003eradio_info['genre'] = ''; $this-\u003eradio_info['url'] = ''; $this-\u003eradio_info['now_playing'] = array(); $this-\u003eradio_info['now_playing']['artist'] = 'Unknown'; $this-\u003eradio_info['now_playing']['track'] = 'Unknown'; $this-\u003eradio_info['status'] = 'OFF AIR'; } function setUrl($url,$file) { $this-\u003eserver=$url; $this-\u003estats_file=$file; $this-\u003eradio_info['server'] = $this-\u003eserver; } private function fetch() { // create a new curl resource $ch = curl_init(); // set the url curl_setopt($ch,CURLOPT_URL,$this-\u003eserver.$this-\u003estats_file); // return as a string curl_setopt($ch,CURLOPT_RETURNTRANSFER,1); // $output = the status.xsl file $output = curl_exec($ch); // close curl resource to free up system resources curl_close($ch); return $output; } function getStatus() { $output=$this-\u003efetch(); // loop through $output and sort arrays $temp_array = array(); $search_for = \"]*class=\\\"streamdata\\\"\u003e(.*)\"; $search_td = array('',''); if(preg_match_all(\"/$search_for/siU\",$output,$matches)) { foreach($matches[0] as $match) { $to_push = str_replace($search_td,'',$match); $to_push = trim($to_push); array_push($temp_array,$to_push); } } if(count($temp_array)) { //sort our temp array into our ral array $this-\u003eradio_info['title'] = $temp_array[0]; $this-\u003eradio_info['description'] = $temp_array[1]; $this-\u003eradio_info['content_type'] = $temp_array[2]; $this-\u003eradio_info['mount_start'] = $temp_array[3]; $this-\u003eradio_info['bit_rate'] = $temp_array[4]; $this-\u003eradio_info['listeners'] = $temp_array[5]; $this-\u003eradio_info['most_listeners'] = $temp_array[6]; $this-\u003eradio_info['genre'] = $temp_array[7]; $this-\u003eradio_info['url'] = $temp_array[8]; if(isset($temp_array[9])) { $x = explode(\" - \",$temp_array[9]); $this-\u003eradio_info['now_playing']['artist'] = $x[0]; $this-\u003eradio_info['now_playing']['track'] = $x[1]; } $this-\u003eradio_info['status'] = 'ON AIR'; } return $this-\u003eradio_info; } } ","wordCount":"351","inLanguage":"en","datePublished":"2014-03-14T00:00:00Z","dateModified":"2014-03-14T00:00:00Z","author":{"@type":"Person","name":"ulysses"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:1313/posts/icecast-php-class/"},"publisher":{"@type":"Organization","name":"uly.me","logo":{"@type":"ImageObject","url":"http://localhost:1313/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=header-nav><div class=logo><a href=http://localhost:1313/ accesskey=h title="uly.me (Alt + H)">uly.me</a><div class=logo-switches><button id=theme-toggle class=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
+<svg class="moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+<svg class="sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu class=menu><li><a href=http://localhost:1313/ title=Home><span>Home</span></a></li><li><a href=http://localhost:1313/about/ title=About><span>About</span></a></li><li><a href=http://localhost:1313/archives/ title=Archives><span>Archives</span></a></li><li><a href=http://localhost:1313/search/ title="Search (Alt + /)" accesskey=/><span>Search</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><nav class=breadcrumbs role=navigation aria-label=Breadcrumb><a href=/>Home</a>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"/></svg>
+<a href=/posts/>Posts</a>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"/></svg></nav><h1 class="post-title entry-hint-parent">icecast php class</h1><div class=post-meta><span title=2014-03-14T00:00:00+00:00>March 14, 2014</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>ulysses</span></div></header><div class="post-content md-content"><p>I modified an existing Icecast PHP class that I found online. I’ve added a couple of extra fields particularly the ‘status’ field where you’ll be able to determine if your Icecast server is streaming or not. I’ve initially set the status variable to ‘On Air’ and ‘Off Air.’ To use the class, take a look at the code below:</p><pre tabindex=0><code>// include the class file
+include( &#39;icecast.php&#39; );
+
+// instantiate class
+$stream = new IceCast();
+
+// set server and mount
+$server = &#39;http://yourdomain.com:8001&#39;;
+$file   = &#39;/status.xsl?mount=/yourmount.ogg&#39;;
+
+// set the url
+$stream-&gt;setUrl($server,$file);
+
+// get status info
+$radio = $stream-&gt;getStatus();
+
+// assign array to variables
+extract($radio);
+
+// echo the status
+echo $status.&#39;&lt;br&gt;&lt;/br&gt;&#39;;
+
+// display more stats if ON AIR
+if ($status==&#39;ON AIR&#39;) :
+echo $listeners.&#39; listeners&lt;br&gt;&lt;/br&gt;&#39;;
+echo $most_listeners.&#39; max listeners&lt;br&gt;&lt;/br&gt;&#39;;
+endif;
+</code></pre><p>Here’s the Icecast class.</p><pre tabindex=0><code>class IceCast {
+    var $server = &#34;http://yourdomain.com:8001&#34;;
+    var $stats_file = &#34;/status.xsl?mount=/yourmount.ogg&#34;;
+    var $radio_info=array();
+
+    function __construct() {
+        // build array to store our Icecast stats   
+        $this-&gt;radio_info[&#39;server&#39;] = $this-&gt;server;
+        $this-&gt;radio_info[&#39;title&#39;] = &#39;&#39;;
+        $this-&gt;radio_info[&#39;description&#39;] = &#39;&#39;;
+        $this-&gt;radio_info[&#39;content_type&#39;] = &#39;&#39;;
+        $this-&gt;radio_info[&#39;mount_start&#39;] = &#39;&#39;;
+        $this-&gt;radio_info[&#39;bit_rate&#39;] = &#39;&#39;;
+        $this-&gt;radio_info[&#39;listeners&#39;] = &#39;&#39;;
+        $this-&gt;radio_info[&#39;most_listeners&#39;] = &#39;&#39;;
+        $this-&gt;radio_info[&#39;genre&#39;] = &#39;&#39;;
+        $this-&gt;radio_info[&#39;url&#39;] = &#39;&#39;;
+        $this-&gt;radio_info[&#39;now_playing&#39;] = array();
+        $this-&gt;radio_info[&#39;now_playing&#39;][&#39;artist&#39;] = &#39;Unknown&#39;;
+        $this-&gt;radio_info[&#39;now_playing&#39;][&#39;track&#39;] = &#39;Unknown&#39;;
+        $this-&gt;radio_info[&#39;status&#39;] = &#39;OFF AIR&#39;;
+    }
+
+    function setUrl($url,$file) {
+        $this-&gt;server=$url;
+        $this-&gt;stats_file=$file;
+        $this-&gt;radio_info[&#39;server&#39;] = $this-&gt;server;
+    }
+
+    private function fetch() {
+        // create a new curl resource
+        $ch = curl_init();
+
+        // set the url
+        curl_setopt($ch,CURLOPT_URL,$this-&gt;server.$this-&gt;stats_file);
+
+        // return as a string
+        curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
+
+        // $output = the status.xsl file
+        $output = curl_exec($ch);
+
+        // close curl resource to free up system resources
+        curl_close($ch);
+
+        return $output;
+    }
+
+    function getStatus() {
+        $output=$this-&gt;fetch();
+
+        // loop through $output and sort arrays
+        $temp_array = array();
+
+        $search_for = &#34;&lt;td&gt;]*class=\&#34;streamdata\&#34;&gt;(.*)&#34;;
+        $search_td = array(&#39;&lt;/td&gt;&lt;td class=&#34;streamdata&#34;&gt;&#39;,&#39;&lt;/td&gt;&#39;);
+
+        if(preg_match_all(&#34;/$search_for/siU&#34;,$output,$matches)) {
+           foreach($matches[0] as $match) {
+              $to_push = str_replace($search_td,&#39;&#39;,$match);
+              $to_push = trim($to_push);
+              array_push($temp_array,$to_push);
+           }
+        }
+
+        if(count($temp_array)) {
+            //sort our temp array into our ral array
+            $this-&gt;radio_info[&#39;title&#39;] = $temp_array[0];
+            $this-&gt;radio_info[&#39;description&#39;] = $temp_array[1];
+            $this-&gt;radio_info[&#39;content_type&#39;] = $temp_array[2];
+            $this-&gt;radio_info[&#39;mount_start&#39;] = $temp_array[3];
+            $this-&gt;radio_info[&#39;bit_rate&#39;] = $temp_array[4];
+            $this-&gt;radio_info[&#39;listeners&#39;] = $temp_array[5];
+            $this-&gt;radio_info[&#39;most_listeners&#39;] = $temp_array[6];
+            $this-&gt;radio_info[&#39;genre&#39;] = $temp_array[7];
+            $this-&gt;radio_info[&#39;url&#39;] = $temp_array[8];
+
+            if(isset($temp_array[9])) {
+                $x = explode(&#34; - &#34;,$temp_array[9]);
+                $this-&gt;radio_info[&#39;now_playing&#39;][&#39;artist&#39;] = $x[0];
+                $this-&gt;radio_info[&#39;now_playing&#39;][&#39;track&#39;] = $x[1];
+            }
+            $this-&gt;radio_info[&#39;status&#39;] = &#39;ON AIR&#39;;
+        
+        }
+        return $this-&gt;radio_info;
+        }
+
+}
+</code></pre></div><footer class=post-footer><ul class=post-tags></ul></footer></article></main><footer class=footer><span>&copy; 2026 <a href=http://localhost:1313/>uly.me</a></span> ·
+<span>Powered by
+<a href="https://gohugo.io/?utm_source=papermod" rel=noopener target=_blank>Hugo</a> &
+<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top id=top-link class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey=g><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up"><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg>
+</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10));let t;menu.addEventListener("scroll",function(){clearTimeout(t),t=setTimeout(function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)},150)},{passive:!0})}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var n=this.getAttribute("href").substr(1);const t=document.querySelector(`[id='${decodeURIComponent(n)}']`);window.matchMedia("(prefers-reduced-motion: reduce)").matches?t.scrollIntoView():t.scrollIntoView({behavior:"smooth"}),t.tabIndex<0&&!t.hasAttribute("tabindex")&&t.setAttribute("tabindex","-1"),t.focus({preventScroll:!0}),n==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${n}`)})})</script><script>var toplink=document.getElementById("top-link"),scrollTicking=!1;window.addEventListener("scroll",function(){if(scrollTicking)return;scrollTicking=!0,requestAnimationFrame(function(){const e=window.innerHeight,t=document.body.scrollTop>e||document.documentElement.scrollTop>e;toplink.classList.toggle("hidden",!t),scrollTicking=!1})},{passive:!0})</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copy";function s(){t.innerHTML="copied!",setTimeout(()=>{t.innerHTML="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>
