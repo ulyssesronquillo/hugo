@@ -1,11 +1,11 @@
 ---
-title: "Welcome"
+title: "welcome"
 ---
 
-# Welcome
+# welcome
 
-My name is Ulysses. Sr. Cloud Engineer at Cardinal Health.
+I'm Ulysses. Sr. Cloud Engineer.
 
-## About This Website
+## about this website
 
-This is my static site based on Hugo.
+This sit was based on Hugo.
