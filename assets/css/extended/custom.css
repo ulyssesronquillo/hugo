@@ -29,3 +29,15 @@
     font-weight: bold;
 }
 
+.post-single .breadcrumbs a[href="/"] {
+    display: none;
+}
+
+.post-single .breadcrumbs svg {
+    display: none;
+}
+
+.post-single .post-meta span {
+    display: none;
+}
+
