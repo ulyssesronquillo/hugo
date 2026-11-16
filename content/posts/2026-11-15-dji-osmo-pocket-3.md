@@ -1,6 +1,6 @@
 ---
 author: ulysses
-title: DJI Osmo Pocket 3
+title: dji osmo pocket 3
 date: 2026-11-15
 draft: false
 ---
