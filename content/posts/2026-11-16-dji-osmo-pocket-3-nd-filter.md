@@ -1,5 +1,5 @@
 ---
-title: dji osmo pocket 3 nd filter
+title: nd filter
 date: 2026-11-16
 draft: false
 ---
