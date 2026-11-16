@@ -1,5 +1,5 @@
 ---
-title: pgytech magcam 3
+title: pgytech magcam
 date: 2026-11-16
 draft: false
 ---
