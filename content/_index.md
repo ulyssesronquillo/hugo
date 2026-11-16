@@ -2,4 +2,4 @@
 title: "welcome"
 ---
 
-I'm Ulysses. Welcome to my website.
+I'm Ulysses. Welcome to my site.
