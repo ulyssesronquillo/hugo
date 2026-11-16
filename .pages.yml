@@ -12,10 +12,6 @@ content:
       sort: date
       order: desc
     fields:
-      - name: author
-        label: Author
-        type: string
-
       - name: title
         label: Title
         type: string
