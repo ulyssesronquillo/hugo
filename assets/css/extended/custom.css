@@ -7,7 +7,6 @@
 }
 
 .post-single .breadcrumbs a[href="/"] {
-    display: none;
 }
 
 .post-single .breadcrumbs svg {
