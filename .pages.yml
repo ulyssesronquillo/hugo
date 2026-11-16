@@ -21,10 +21,6 @@ content:
         label: Date
         type: date
 
-      - name: slug
-        label: Slug
-        type: string
-
       - name: draft
         label: Draft
         type: boolean
