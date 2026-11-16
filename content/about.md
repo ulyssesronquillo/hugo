@@ -1,8 +1,10 @@
 ---
 title: "About"
-summary: "About me"
+hidemeta: true
+comments: false
+--- 
+
 ### about
----
 
 - senior cloud engineer at [cardinal health](http://cardinalhealth.com)
 - [certified aws solutions architect associate](https://aws.amazon.com/certification/certified-solutions-architect-associate/)
