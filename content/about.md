@@ -2,6 +2,7 @@
 title: "About"
 hidemeta: true
 comments: false
+ShowBreadCrumbs: false
 --- 
 
 ### about
