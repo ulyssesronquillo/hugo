@@ -14,7 +14,7 @@ ShowReadingTime: false
 - [php](http://php.net) framework: [laravel](http://laravel.com) and [codeigniter](http://www.codeigniter.com)
 - hobbies: [surf1](https://uly.me/wp-content/uploads/2019/08/surfer2.jpg), [surf2](https://uly.me/wp-content/uploads/2019/08/surfer1.jpg), [snowboard](https://www.youtube.com/watch?v=drsauj29f5c) and [sax](https://www.youtube.com/watch?v=mnpznq5nkp8)
 - [wordpress](http://wordpress.org) user since release 1.2 may 2004
-- the [site](http://uly.me) runs on [hugo](https://hugo.io/) at [github](https://github.com)
+- the [site](http://uly.me) runs on [hugo](https://gohugo.io/) at [github](https://github.com)
 - photos: [flicker](https://www.flickr.com/photos/199792240@N07/). [gallery](https://s3.us-east-2.amazonaws.com/javison.com/index.html). [javison](https://javison.com). 
 - cameras: nikon [d90](https://www.nikonusa.com/en/nikon-products/product-archive/dslr-cameras/d90.html). [d700](https://www.nikonusa.com/en/nikon-products/product-archive/dslr-cameras/d700.html). fuji [xt30 ii](https://fujifilm-x.com/en-us/products/cameras/x-t30-ii/)
 
