@@ -32,7 +32,7 @@ content:
   - name: about
     label: About
     type: file
-    path: about.md
+    path: content/about.md
     fields:
       - name: title
         type: string
