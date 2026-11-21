@@ -33,14 +33,4 @@ content:
     fields:
       - name: title
         type: string
-      - name: hidemeta
-        type: boolean
-      - name: comments
-        type: boolean
-      - name: ShowBreadCrumbs
-        type: boolean
-      - name: body
-        type: rich-text
-      - name: ShowReadingTime
-        type: boolean
 
