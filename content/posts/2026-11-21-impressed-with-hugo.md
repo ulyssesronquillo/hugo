@@ -5,9 +5,13 @@ draft: false
 ---
 I've been impressed by Hugo. It is simple and fast.
 
-I'm trying to use it with Pages CMS, an editor for Github repos.
+I'm editing my posts via Pages CMS, an front-end editor for Github repos.
+
+I'm trying to insert external images from Flickr.
 
 ![coffee](https://live.staticflickr.com/65535/55646904557_aebb003d79_b.jpg)
+
+And working with the code block.
 
 ```
 #!/bin/bash
