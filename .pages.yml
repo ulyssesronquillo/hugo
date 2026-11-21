@@ -41,6 +41,6 @@ content:
         type: boolean
       - name: body
         type: rich-text
-      - name: showReadingTime
+      - name: ShowReadingTime
         type: boolean
 
