@@ -1,9 +1,9 @@
 ---
-title: "About"
-hidemeta: true
+hidemeta: false
 comments: false
 ShowBreadCrumbs: false
---- 
+---
+---
 
 ### about
 
@@ -186,5 +186,4 @@ ShowBreadCrumbs: false
 - [semantic ui](https://semantic-ui.com/), [grunt](https://gruntjs.com/), [codepen](https://codepen.io/)
 - [pastebin](https://pastebin.com/), [certbot](https://certbot.eff.org/), [foundation](https://foundation.zurb.com/)
 - [replit](https://replit.com), [base44](https://base44.com), [github co-spaces](https://github.com/features/codespaces)
-
 
