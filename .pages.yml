@@ -29,3 +29,12 @@ content:
         label: Content
         type: rich-text
 
+  - name: about
+    label: About
+    type: file
+    path: about.md
+    fields:
+      - name: title
+        type: string
+      - name: body
+        type: rich-text
