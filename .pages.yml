@@ -29,13 +29,19 @@ content:
         label: Content
         type: rich-text
 
-  - name: about
-    label: About
-    type: file
-    path: content/about.md
-    fields:
-      - name: title
-        type: string
-      - name: body
-        type: rich-text
+- name: about
+  label: About
+  type: file
+  path: content/about.md
+  fields:
+    - name: title
+      type: string
+    - name: hidemeta
+      type: boolean
+    - name: comments
+      type: boolean
+    - name: ShowBreadCrumbs
+      type: boolean
+    - name: body
+      type: rich-text
 
