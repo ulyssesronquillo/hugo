@@ -38,3 +38,4 @@ content:
         type: string
       - name: body
         type: rich-text
+
