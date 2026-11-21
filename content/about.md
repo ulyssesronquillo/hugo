@@ -1,4 +1,5 @@
 ---
+title: About
 hidemeta: false
 comments: false
 ShowBreadCrumbs: false
